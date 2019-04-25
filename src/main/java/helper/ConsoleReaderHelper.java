@@ -6,6 +6,7 @@ import java.util.Scanner;
 import static app.Main.customerSize;
 import static app.Main.customerInfo;
 import static helper.CalculatorHelper.removeArrayElementByIndex;
+import static util.ResultUtil.printResult;
 
 public class ConsoleReaderHelper {
 
@@ -130,6 +131,8 @@ public class ConsoleReaderHelper {
             }
 
         }
+
+        printResult();
 
     }
 
