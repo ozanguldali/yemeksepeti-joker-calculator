@@ -6,12 +6,14 @@ import util.ResultUtil;
 
 import java.util.*;
 
-public class Main {
+public class ConsoleMain {
 
-    public static final int customerSize = ConsoleReaderHelper.getCustomerSize();
+    public static int customerSize = 0;
     public static final HashMap<String, Double> customerInfo = new HashMap<>();
 
     public static void main(String[] args) {
+
+        customerSize = ConsoleReaderHelper.getCustomerSize();
 
         if ( customerSize == 0 )
             System.out.println( "\nThe customer number is invalid:" + customerSize);

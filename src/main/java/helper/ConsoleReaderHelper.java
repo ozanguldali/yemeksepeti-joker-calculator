@@ -3,8 +3,8 @@ package helper;
 import java.util.Arrays;
 import java.util.Scanner;
 
-import static app.Main.customerSize;
-import static app.Main.customerInfo;
+import static app.ConsoleMain.customerSize;
+import static app.ConsoleMain.customerInfo;
 import static helper.CalculatorHelper.removeArrayElementByIndex;
 import static util.ResultUtil.printResult;
 
@@ -121,7 +121,7 @@ public class ConsoleReaderHelper {
                 }
 
                 for ( int j = 0; j < customerInfoArrayLength - 1; j++ )
-                    name.append(" ").append(customerInfoArray[ j ]);
+                    name.append(" ").append( customerInfoArray[ j ] );
 
                 if ( customerInfo.containsKey( name.toString() ) )
                     name.append( "_" ).append( i );

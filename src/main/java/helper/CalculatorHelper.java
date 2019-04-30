@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.*;
 
-import static app.Main.customerInfo;
+import static app.ConsoleMain.customerInfo;
 import static util.CalculatorUtil.errorMap;
 import static util.CalculatorUtil.totalDiscountAmount;
 
@@ -44,6 +44,8 @@ public class CalculatorHelper {
         if ( !( selector > roundMultiplier.length - 1 ) ) {
             getOptimal();
         }
+
+        selector = 0;
 
     }
 

@@ -2,7 +2,7 @@ package util;
 
 import helper.CalculatorHelper;
 
-import static app.Main.customerInfo;
+import static app.ConsoleMain.customerInfo;
 
 public class ResultUtil {
 

@@ -3,16 +3,15 @@ package util;
 import java.util.Collections;
 import java.util.HashMap;
 
-import static app.Main.customerInfo;
+import static app.ConsoleMain.customerInfo;
 import static helper.CalculatorHelper.*;
 
 public class CalculatorUtil {
 
     public static HashMap<Double, HashMap<String, Double>> errorMap = new HashMap<>();
 
-    private static double totalAmount = 0;
-    public static double totalDiscountAmount = 0;
-    private static double discountPercent = 0;
+    public static double totalDiscountAmount;
+    private static double discountPercent;
 
     private static final int firstLevel = 30;
     private static final int firstDiscount = 10;
@@ -25,13 +24,17 @@ public class CalculatorUtil {
 
     public static void calculateTotalDiscount() {
 
+        double totalAmount = 0;
+        totalDiscountAmount = 0;
+        discountPercent = 0;
+
         for ( String name : customerInfo.keySet() ) {
 
             totalAmount = totalAmount + customerInfo.get( name );
 
         }
 
-        System.out.println( "\nThe total amount is:\t" + totalAmount );
+        System.out.println( "\nThe total amount is:\t" + totalAmount);
 
         if ( inRange( firstLevel, totalAmount, secondLevel ) ) {
 
@@ -54,7 +57,7 @@ public class CalculatorUtil {
             System.out.println( "The amount of discount is\t" + thirdDiscount );
             System.out.println( "The updated joker amount is\t" + totalDiscountAmount );
 
-        } else if ( fourthLevel <= totalAmount ) {
+        } else if ( fourthLevel <= totalAmount) {
 
             totalDiscountAmount = totalAmount - fourthDiscount;
 
