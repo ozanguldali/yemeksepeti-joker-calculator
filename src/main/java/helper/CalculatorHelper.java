@@ -10,7 +10,7 @@ import static util.CalculatorUtil.totalDiscountAmount;
 
 public class CalculatorHelper {
 
-    private static double[] roundMultiplier = { 1.0, 2.0, 4.0, 5.0, 10.0, 20.0, 50.0, 100.0 };
+    private static double[] roundMultiplier = { 1.0, 2.0, 4.0, 5.0, 10.0, 20.0 };
     private static int selector = 0;
 
     public static void getOptimal() {

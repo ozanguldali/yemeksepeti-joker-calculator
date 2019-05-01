@@ -6,18 +6,22 @@ import static app.ConsoleMain.customerInfo;
 
 public class ResultUtil {
 
+    public static double roundedCost;
+
     public static void printResult() {
 
-        double total = 0.0;
+        roundedCost = 0.0;
 
         for (String name : customerInfo.keySet()) {
 
-            System.out.println( "Name: " + name + "\t-\tAmount: " + customerInfo.get(name) );
-            total = total + customerInfo.get( name );
+            System.out.println( "Name: " + name + "\t-\tAmount: " + customerInfo.get( name ) );
+            roundedCost = roundedCost + customerInfo.get( name );
 
         }
 
-        System.out.println( "\nThe total rounded value is:\t" + CalculatorHelper.round( total, 4 ) );
+        roundedCost = CalculatorHelper.round( roundedCost, 4 );
+
+        System.out.println( "\nThe total rounded value is:\t" + roundedCost );
 
     }
 

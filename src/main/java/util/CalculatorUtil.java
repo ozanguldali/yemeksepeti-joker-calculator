@@ -10,8 +10,9 @@ public class CalculatorUtil {
 
     public static HashMap<Double, HashMap<String, Double>> errorMap = new HashMap<>();
 
+    public static double totalAmount = 0;
     public static double totalDiscountAmount;
-    private static double discountPercent;
+    public static double discountPercent;
 
     private static final int firstLevel = 30;
     private static final int firstDiscount = 10;
@@ -24,7 +25,7 @@ public class CalculatorUtil {
 
     public static void calculateTotalDiscount() {
 
-        double totalAmount = 0;
+        totalAmount = 0;
         totalDiscountAmount = 0;
         discountPercent = 0;
 
