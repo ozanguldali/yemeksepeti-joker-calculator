@@ -9,6 +9,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import static app.ConsoleMain.customerSize;
+import static com.calculator.joker.util.ObjectMapperUtil.beautify;
 import static util.CalculatorUtil.discountPercent;
 import static util.CalculatorUtil.totalAmount;
 import static util.CalculatorUtil.totalDiscountAmount;
@@ -140,24 +141,6 @@ public class ResponseModel {
                 "}";
 
         return beautify(str[0]);
-
-    }
-
-    String beautify(String json) {
-        ObjectMapper mapper = new ObjectMapper();
-        Object obj = null;
-        try {
-            obj = mapper.readValue(json, Object.class);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        try {
-            return mapper.writerWithDefaultPrettyPrinter().writeValueAsString(obj);
-        } catch (JsonProcessingException e) {
-            e.printStackTrace();
-        }
-
-        return null;
 
     }
 

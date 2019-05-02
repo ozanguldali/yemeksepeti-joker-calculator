@@ -11,9 +11,10 @@ import util.ResultUtil;
 import java.util.HashMap;
 import java.util.List;
 
+import static util.LoggerUtil.logger;
+
 import static app.ConsoleMain.customerInfo;
 import static app.ConsoleMain.customerSize;
-import static com.calculator.joker.controller.RequestController.logger;
 import static com.calculator.joker.model.ValidationErrorModel.errorMessage;
 
 @Service

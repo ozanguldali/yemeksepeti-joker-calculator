@@ -7,12 +7,13 @@ import com.google.gson.JsonParser;
 import java.util.ArrayList;
 import java.util.List;
 
+import static util.LoggerUtil.logger;
+
 import static com.calculator.joker.model.ValidationErrorModel.errorMessage;
-import static com.calculator.joker.controller.RequestController.logger;
 
 public class RequestModel {
 
-    final static JsonParser jsonParser = new JsonParser();
+    private final static JsonParser jsonParser = new JsonParser();
 
     public RequestModel(String payload) {
 
@@ -87,13 +88,13 @@ public class RequestModel {
 
     }
 
-    public List<Customer> customers;
+    private List<Customer> customers;
 
     public List<Customer> getCustomers() {
         return customers;
     }
 
-    public void setCustomers(List<Customer> customers) {
+    private void setCustomers(List<Customer> customers) {
         this.customers = customers;
     }
 

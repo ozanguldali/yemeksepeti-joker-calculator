@@ -5,6 +5,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.IOException;
 
+import static com.calculator.joker.util.ObjectMapperUtil.beautify;
+
 public class ValidationErrorModel {
 
     public static String errorMessage;
@@ -14,7 +16,7 @@ public class ValidationErrorModel {
     }
 
     public void setErrorMessage(String errorMessage) {
-        this.errorMessage = errorMessage;
+        ValidationErrorModel.errorMessage = errorMessage;
     }
 
     @Override
@@ -25,24 +27,6 @@ public class ValidationErrorModel {
                 "}";
 
         return beautify(str);
-
-    }
-
-    String beautify(String json) {
-        ObjectMapper mapper = new ObjectMapper();
-        Object obj = null;
-        try {
-            obj = mapper.readValue(json, Object.class);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        try {
-            return mapper.writerWithDefaultPrettyPrinter().writeValueAsString(obj);
-        } catch (JsonProcessingException e) {
-            e.printStackTrace();
-        }
-
-        return null;
 
     }
 
