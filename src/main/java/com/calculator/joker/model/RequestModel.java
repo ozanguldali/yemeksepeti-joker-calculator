@@ -26,7 +26,7 @@ public class RequestModel {
 
         } catch (Exception e) {
 
-            e.printStackTrace();
+            logger.error( "Request is not a valid Json Object:\t" + e.getMessage() );
             errorMessage = "Request is not a valid Json Object";
 
         }
@@ -64,7 +64,7 @@ public class RequestModel {
 
                                 } catch (Exception e) {
 
-                                    e.printStackTrace();
+                                    logger.error( "The element of 'customers' is not a valid Json Object:\t" + e.getMessage() );
                                     errorMessage = "The element of 'customers' is not a valid Json Object";
 
                                 }
@@ -80,7 +80,7 @@ public class RequestModel {
 
         } catch (Exception e) {
 
-            logger.error( "'customers' is not a valid Json Array", e.getCause() );
+            logger.error( "'customers' is not a valid Json Array:\t" + e.getMessage() );
             errorMessage = "'customers' is not a valid Json Array";
 
         }

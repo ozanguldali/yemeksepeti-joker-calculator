@@ -13,6 +13,7 @@ import java.util.List;
 
 import static app.ConsoleMain.customerInfo;
 import static app.ConsoleMain.customerSize;
+import static com.calculator.joker.controller.RequestController.logger;
 import static com.calculator.joker.model.ValidationErrorModel.errorMessage;
 
 @Service
@@ -73,7 +74,19 @@ public class JokerService {
 
                 }
 
-                double userCostDouble = Double.valueOf( userCost );
+                double userCostDouble = 0;
+
+                try {
+
+                    userCostDouble = Double.valueOf( userCost );
+
+                } catch (Exception e) {
+
+                    logger.error( "customers[i].cost is not a valid double element:\t" + e.getMessage() );
+                    errorMessage = "customers[i].cost is not a valid double element";
+
+                }
+
 
                 customerInfo.put( userName, userCostDouble );
 
@@ -81,11 +94,14 @@ public class JokerService {
 
             }
 
-            CalculatorUtil.calculateTotalDiscount();
+            if ( errorMessage == null )
+                CalculatorUtil.calculateTotalDiscount();
 
-            CalculatorUtil.calculateCustomerDiscount();
+            if ( errorMessage == null )
+                CalculatorUtil.calculateCustomerDiscount();
 
-            ResultUtil.printResult();
+            if ( errorMessage == null )
+                ResultUtil.printResult();
 
             customerInfoService = (HashMap<String, Double>) customerInfo.clone();
 
