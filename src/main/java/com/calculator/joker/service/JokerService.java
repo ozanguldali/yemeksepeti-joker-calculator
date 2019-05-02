@@ -42,6 +42,8 @@ public class JokerService {
 
         }
 
+        int userNameCounter = 1;
+
         if ( customerList != null ) {
 
             for ( Customer customer : customerList ) {
@@ -87,6 +89,12 @@ public class JokerService {
 
                 }
 
+                if ( customerInfo.containsKey( userName ) ) {
+
+                    userName = userName + "_" + userNameCounter;
+                    userNameCounter++;
+
+                }
 
                 customerInfo.put( userName, userCostDouble );
 

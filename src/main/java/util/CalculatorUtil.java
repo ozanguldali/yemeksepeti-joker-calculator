@@ -83,6 +83,8 @@ public class CalculatorUtil {
 
     public static void calculateCustomerDiscount() {
 
+        errorMap.clear();
+
         customerInfo.forEach(
                 ( name, amount ) -> {
 

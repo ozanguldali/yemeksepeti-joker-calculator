@@ -5,6 +5,7 @@ import java.math.RoundingMode;
 import java.util.*;
 
 import static app.ConsoleMain.customerInfo;
+import static app.ConsoleMain.customerSize;
 import static util.CalculatorUtil.errorMap;
 import static util.CalculatorUtil.totalDiscountAmount;
 
