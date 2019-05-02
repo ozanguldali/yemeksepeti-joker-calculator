@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.*;
 import com.calculator.joker.service.JokerService;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.Map;
 
 import static com.calculator.joker.model.ValidationErrorModel.errorMessage;
 
@@ -23,7 +22,7 @@ public class RequestController {
     private final static String VALID_HTTP_METHOD = "POST";
     private final static String VALID_CONTENT_TYPE = "application/json";
 
-    private Logger logger = LoggerFactory.getLogger( RequestController.class );
+    public static Logger logger = LoggerFactory.getLogger( RequestController.class );
 
     @Autowired
     JokerService jokerService;
@@ -33,9 +32,11 @@ public class RequestController {
                                         @RequestHeader(value = HttpHeaders.CONTENT_TYPE, defaultValue = VALID_CONTENT_TYPE,
                                                 required = true) String contentType) {
 
+        errorMessage = null;
+
         final String payload = httpEntity.getBody();
         final String httpResponseBody;
-        final Map<String, String> httpResponseHeaders;
+        String temp_httpResponseBody;
 
         logger.trace( "Got a request with http method '{}' with header '{}' and body:\n'{}'\n",
                 request.getMethod(), contentType, payload );
@@ -51,24 +52,21 @@ public class RequestController {
             return new ResponseEntity<>("Unsupported Media Type", HttpStatus.UNSUPPORTED_MEDIA_TYPE);
 
 
-        if ( errorMessage == null ) {
+        final ResponseModel validResponse = jokerService.getResponse( payload );
+        temp_httpResponseBody = validResponse.toString();
 
-            final ResponseModel validResponse = jokerService.getResponse( payload );
-            httpResponseBody = validResponse.toString();
-
-        } else {
+        if ( errorMessage != null ) {
 
             final ValidationErrorModel failedResponse = jokerService.getError();
-            httpResponseBody = failedResponse.toString();
+            temp_httpResponseBody = failedResponse.toString();
 
         }
 
+        httpResponseBody = temp_httpResponseBody;
         logger.trace( "Response: \n'{}'", httpResponseBody );
 
         HttpHeaders headers = new HttpHeaders();
-//        for (Map.Entry<String, String> entry : httpResponseHeaders.entrySet()) {
-//            headers.set(entry.getKey(), entry.getValue());
-//        }
+        headers.set( HttpHeaders.CONTENT_TYPE, VALID_CONTENT_TYPE );
 
         return new ResponseEntity<>(httpResponseBody, headers, HttpStatus.OK);
 

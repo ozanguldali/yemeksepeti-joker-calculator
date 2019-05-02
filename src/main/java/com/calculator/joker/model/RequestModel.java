@@ -1,6 +1,5 @@
 package com.calculator.joker.model;
 
-import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
@@ -9,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static com.calculator.joker.model.ValidationErrorModel.errorMessage;
+import static com.calculator.joker.controller.RequestController.logger;
 
 public class RequestModel {
 
@@ -36,45 +36,51 @@ public class RequestModel {
             JsonArray jsonArray = jsonObject.getAsJsonArray("customers");
 
             if ( jsonArray == null )
-                errorMessage = "'customers' is not a valid Json Array";
+                errorMessage = "'customers' is not included in the request";
 
             else {
 
-                List<Customer> customerList = new ArrayList<>();
+                if ( jsonArray.size() < 1 )
+                    errorMessage = "'customers' array object is empty, users are not included in the request";
+                else {
 
-                jsonArray.forEach(
-                        ( value ) -> {
+                    List<Customer> customerList = new ArrayList<>();
 
-                            try {
+                    jsonArray.forEach(
+                            ( value ) -> {
 
-                                JsonObject customerObject = value.getAsJsonObject();
+                                try {
 
-                                String name = customerObject.get( "name" ).getAsString();
-                                String cost = customerObject.get( "cost" ).getAsString();
+                                    JsonObject customerObject = value.getAsJsonObject();
 
-                                Customer customer = new Customer();
-                                customer.setName( name );
-                                customer.setCost( cost );
+                                    String name = customerObject.get( "name" ).getAsString();
+                                    String cost = customerObject.get( "cost" ).getAsString();
 
-                                customerList.add( customer );
+                                    Customer customer = new Customer();
+                                    customer.setName( name );
+                                    customer.setCost( cost );
 
-                            } catch (Exception e) {
+                                    customerList.add( customer );
 
-                                e.printStackTrace();
-                                errorMessage = "The element of 'customers' is not a valid Json Object";
+                                } catch (Exception e) {
+
+                                    e.printStackTrace();
+                                    errorMessage = "The element of 'customers' is not a valid Json Object";
+
+                                }
 
                             }
+                    );
 
-                        }
-                );
+                    setCustomers( customerList );
 
-                setCustomers( customerList );
+                }
 
             }
 
         } catch (Exception e) {
 
-            e.printStackTrace();
+            logger.error( "'customers' is not a valid Json Array", e.getCause() );
             errorMessage = "'customers' is not a valid Json Array";
 
         }
