@@ -5,7 +5,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import static app.ConsoleMain.customerSize;
-import static com.calculator.joker.api.util.ObjectMapperUtil.beautify;
+import static com.calculator.joker.api.util.ObjectMapperUtil.beautifyJsonToString;
 import static util.CalculatorUtil.discountPercent;
 import static util.CalculatorUtil.totalAmount;
 import static util.CalculatorUtil.totalDiscountAmount;
@@ -136,7 +136,7 @@ public class ResponseModel {
                 "\"totalRoundedCost\":\"" + totalRoundedCost + "\"" +
                 "}";
 
-        return beautify(str[0]);
+        return beautifyJsonToString(str[0]);
 
     }
 

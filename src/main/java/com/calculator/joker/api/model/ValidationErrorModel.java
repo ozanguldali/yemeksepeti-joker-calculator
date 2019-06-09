@@ -1,6 +1,6 @@
 package com.calculator.joker.api.model;
 
-import static com.calculator.joker.api.util.ObjectMapperUtil.beautify;
+import static com.calculator.joker.api.util.ObjectMapperUtil.beautifyJsonToString;
 
 public class ValidationErrorModel {
 
@@ -21,7 +21,7 @@ public class ValidationErrorModel {
                 "\"errorMessage\":\"" + errorMessage + "\"" +
                 "}";
 
-        return beautify(str);
+        return beautifyJsonToString(str);
 
     }
 

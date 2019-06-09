@@ -19,7 +19,7 @@
 
                 <tr>
                     <td>Toplam Alisveris Tutari</td>
-                    <td>${totalCost}</td>
+                    <td>${totalActualCost}</td>
                 </tr>
 
                 <tr>
@@ -29,12 +29,12 @@
 
                 <tr>
                     <td>Joker Indirimli Tutar</td>
-                    <td>${discountCost}</td>
+                    <td>${totalDiscountedCost}</td>
                 </tr>
 
                 <tr>
                     <td>Yuvarlanmis Odenecek Tutar</td>
-                    <td>${roundedCost}</td>
+                    <td>${totalRoundedCost}</td>
                 </tr>
 
             </table>
@@ -47,10 +47,12 @@
 
                 <tr>
                     <th>Isim - Soyisim</th>
-                    <th>Jokersiz Tutar</th>
-                    <th>Jokerli Tutar</th>
+<!--                    <th>Jokersiz Tutar</th>-->
+<!--                    <th>Jokerli Tutar</th>-->
                     <th>Odenecek Tutar</th>
                 </tr>
+
+                ${tableContent}
 
             </table>
 
