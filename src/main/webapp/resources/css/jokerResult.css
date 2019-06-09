@@ -1,0 +1,27 @@
+.class-jokerResult-page {
+    width: 300px;
+    font-size: 13px;
+}
+
+.class-jokerResult-page {
+    background-color: white;
+    width: 300px;
+    height: 275px;
+    overflow: auto;
+}
+
+caption {
+    display: table-caption;
+    align: top;
+    text-align: center;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table, td, th {
+    border: 1px solid black;
+    text-align: center;
+}

@@ -1,11 +1,11 @@
-.ut-widget {
-    width: 250px;
+.class-customerInfo-page {
+    width: 300px;
     font-size: 13px;
 }
 
-.ut-widget {
+.class-customerInfo-page {
     background-color: white;
-    width: 250px;
+    width: 300px;
     height: 275px;
     overflow: auto;
 }
@@ -16,12 +16,6 @@ input.input-info-class {
 }
 input.input-add-class {
     text-align: left;
-}
-
-button.submit-class:active {
-    padding: 5px 12px;
-    margin-top: 25px;
-    text-align: center;
 }
 
 caption {

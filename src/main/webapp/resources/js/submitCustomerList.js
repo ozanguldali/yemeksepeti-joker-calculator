@@ -11,10 +11,6 @@ let submitTask = function () {
 
 submitButton.onclick = function () {
 
-    let table = document.getElementById('customer_list');
-
-    let rowCount = table.rows.length;
-
-    submitButton.disabled = rowCount === 1;
+    window.location.href = "jokerResult.html";
 
 };
