@@ -1,4 +1,4 @@
-package com.calculator.joker.model;
+package com.calculator.joker.api.model;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
@@ -9,7 +9,7 @@ import java.util.List;
 
 import static util.LoggerUtil.logger;
 
-import static com.calculator.joker.model.ValidationErrorModel.errorMessage;
+import static com.calculator.joker.api.model.ValidationErrorModel.errorMessage;
 
 public class RequestModel {
 

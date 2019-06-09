@@ -1,0 +1,15 @@
+{
+  "name": "Yemeksepeti Joker Hesaplayici",
+  "version": "1.0",
+  "description": "Yemeksepeti uzerinden kazanilan joker indirimlerinin, kisiye ozel hesaplanmasini saglar.",
+  "permissions": ["activeTab", "declarativeContent", "storage"],
+  "background": {
+    "scripts": ["src/main/webapp/resources/js/submit.js"],
+    "persistent": false
+  },
+  "browser_action": {
+    "default_popup": "src/main/webapp/popup.html",
+    "default_icon": "src/main/webapp/joker_icon.png"
+  },
+  "manifest_version": 2
+}

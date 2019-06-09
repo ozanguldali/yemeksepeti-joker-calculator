@@ -1,15 +1,11 @@
-package com.calculator.joker.model;
+package com.calculator.joker.api.model;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 
 import static app.ConsoleMain.customerSize;
-import static com.calculator.joker.util.ObjectMapperUtil.beautify;
+import static com.calculator.joker.api.util.ObjectMapperUtil.beautify;
 import static util.CalculatorUtil.discountPercent;
 import static util.CalculatorUtil.totalAmount;
 import static util.CalculatorUtil.totalDiscountAmount;

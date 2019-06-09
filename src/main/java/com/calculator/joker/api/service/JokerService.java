@@ -1,9 +1,9 @@
-package com.calculator.joker.service;
+package com.calculator.joker.api.service;
 
-import com.calculator.joker.model.RequestModel;
-import com.calculator.joker.model.ResponseModel;
-import com.calculator.joker.model.Customer;
-import com.calculator.joker.model.ValidationErrorModel;
+import com.calculator.joker.api.model.RequestModel;
+import com.calculator.joker.api.model.ResponseModel;
+import com.calculator.joker.api.model.Customer;
+import com.calculator.joker.api.model.ValidationErrorModel;
 import org.springframework.stereotype.Service;
 import util.CalculatorUtil;
 import util.ResultUtil;
@@ -15,7 +15,7 @@ import static util.LoggerUtil.logger;
 
 import static app.ConsoleMain.customerInfo;
 import static app.ConsoleMain.customerSize;
-import static com.calculator.joker.model.ValidationErrorModel.errorMessage;
+import static com.calculator.joker.api.model.ValidationErrorModel.errorMessage;
 
 @Service
 public class JokerService {

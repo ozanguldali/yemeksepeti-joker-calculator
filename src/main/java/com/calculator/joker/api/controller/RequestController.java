@@ -1,21 +1,21 @@
-package com.calculator.joker.controller;
+package com.calculator.joker.api.controller;
 
-import com.calculator.joker.model.ResponseModel;
-import com.calculator.joker.model.ValidationErrorModel;
+import com.calculator.joker.api.model.ResponseModel;
+import com.calculator.joker.api.model.ValidationErrorModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import com.calculator.joker.service.JokerService;
+import com.calculator.joker.api.service.JokerService;
 
 import javax.servlet.http.HttpServletRequest;
 
 import static util.LoggerUtil.logger;
 
-import static com.calculator.joker.model.ValidationErrorModel.errorMessage;
-import static com.calculator.joker.util.ObjectMapperUtil.beautify;
+import static com.calculator.joker.api.model.ValidationErrorModel.errorMessage;
+import static com.calculator.joker.api.util.ObjectMapperUtil.beautify;
 
 @RestController
 public class RequestController {

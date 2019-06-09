@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+    <head>
+        <title>Yemeksepeti Joker Hesaplayici</title>
+        <script src="resources/js/jquery-3.4.1.min.js" ></script>
+    </head>
+
+    <meta charset="utf-8">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="resources/css/popup.css">
+
+    <body>
+
+        <div id="widget" class="ut-widget">
+
+        <form action="" id="input_form" onSubmit="window.location.reload();">
+
+            <b> Musteri Ekleme Formu </b>
+
+            <br>
+
+            <label for="name">Isim - Soyisim: </label><br>
+                <input required class="input-info-class" type="text" id="name" size="30" minlength="1" maxlength="30"
+                       placeholder="Kubra Ozcan"><br>
+
+            <label for="initial_cost">Jokersiz Tutar: </label><br>
+                <input required class="input-info-class" type="number" id="initial_cost" size ="6" min="-999999" max="999999"
+                       step="0.01" pattern="^\d+(?:\.\d{1,2})?$" placeholder="#.## / #,##"><br><br>
+
+            <input class="input-add-class" type="submit" value="Ekle" id="add_button" size="10" onclick = addButton.click()>
+
+        </form>
+
+        <hr>
+
+        <table style="width:100%" id="customer_list">
+
+            <caption> <b> Musteri Listesi </b> </caption>
+
+            <tr>
+                <th>Isim - Soyisim</th>
+                <th>Jokersiz Tutar</th>
+            </tr>
+
+        </table>
+
+        <br>
+
+        <button class="submit-class" type="submit" id="submit_button" onclick = submitButton.click()>Gonder</button>
+
+        <button class="clear-class" type="button" id="clear_button" onclick = clearButton.click()>Temizle</button>
+
+        </div>
+
+        <script type="text/javascript" src="resources/js/submit.js" ></script>
+        <noscript>Sorry, your browser does not support JavaScript!</noscript>
+
+    </body>
+
+</html>

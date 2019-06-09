@@ -1,0 +1,54 @@
+.ut-widget {
+    width: 250px;
+    font-size: 13px;
+}
+
+.ut-widget {
+    background-color: white;
+    width: 250px;
+    height: 275px;
+    overflow: auto;
+}
+
+input.input-info-class {
+    width: 205px;
+    text-align: left;
+}
+input.input-add-class {
+    text-align: left;
+}
+
+button.submit-class:active {
+    padding: 5px 12px;
+    margin-top: 25px;
+    text-align: center;
+}
+
+caption {
+    display: table-caption;
+    align: top;
+    text-align: center;
+}
+
+.delete_element-btn {
+    background-color: white;
+    border: none;
+    color: black;
+    padding: 1px 1px;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.delete_element-btn:hover {
+    background-color: white;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table, td, th {
+    border: 1px solid black;
+    text-align: center;
+}

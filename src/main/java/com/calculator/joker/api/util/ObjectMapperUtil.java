@@ -1,4 +1,4 @@
-package com.calculator.joker.util;
+package com.calculator.joker.api.util;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;

@@ -1,6 +1,6 @@
-package com.calculator.joker.util;
+package com.calculator.joker.api.util;
 
-import com.calculator.joker.model.RequestModel;
+import com.calculator.joker.api.model.RequestModel;
 
 public class RequestParameterUtil {
 

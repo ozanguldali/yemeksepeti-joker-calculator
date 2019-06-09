@@ -1,4 +1,4 @@
-package com.calculator.joker;
+package com.calculator.joker.api;
 
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 

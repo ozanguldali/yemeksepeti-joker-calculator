@@ -1,4 +1,4 @@
-package com.calculator.joker.model;
+package com.calculator.joker.api.model;
 
 public class Customer {
 
