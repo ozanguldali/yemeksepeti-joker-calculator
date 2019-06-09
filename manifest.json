@@ -4,11 +4,15 @@
   "description": "Yemeksepeti uzerinden kazanilan joker indirimlerinin, kisiye ozel hesaplanmasini saglar.",
   "permissions": ["activeTab", "declarativeContent", "storage"],
   "background": {
-    "scripts": ["src/main/webapp/resources/js/submit.js"],
+    "scripts": ["src/main/webapp/resources/js/common.js",
+                "src/main/webapp/resources/js/addCustomer.js",
+                "src/main/webapp/resources/js/deleteCustomer.js",
+                "src/main/webapp/resources/js/cleanCustomerList.js",
+                "src/main/webapp/resources/js/submitCustomerList.js"],
     "persistent": false
   },
   "browser_action": {
-    "default_popup": "src/main/webapp/popup.html",
+    "default_popup": "src/main/webapp/customerInfo.html",
     "default_icon": "src/main/webapp/joker_icon.png"
   },
   "manifest_version": 2
