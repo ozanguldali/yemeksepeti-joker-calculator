@@ -32,6 +32,16 @@ let submitTask = function () {
 
 submitButton.onclick = function () {
 
-    window.location.href = "jokerResult.html";
+    let table = document.getElementById('customer_list');
+
+    let rowCount = table.rows.length;
+
+    if ( rowCount !== 1 ) {
+
+        window.location.href = "jokerResult.html";
+
+        document.getElementById("hiddenField" ).submit();
+
+    }
 
 };

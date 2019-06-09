@@ -69,9 +69,11 @@ public class generateJokerResultPage {
 
         tableContent.append( "</tr>" );
 
-        htmlString = htmlString.replace( "${tableContent}", tableContent.toString() );
+        htmlString = htmlString.replace( "${tableContent}", tableContent.toString().replace( "\"", "" ) );
 
         htmlFile = Jsoup.parse( htmlString );
+
+        System.out.println( "\n\n" + htmlString + "\n\n" );
 
         return htmlFile;
 
