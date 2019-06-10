@@ -2,6 +2,7 @@ package com.calculator.joker.api.controller;
 
 import com.calculator.joker.api.model.ResponseModel;
 import com.calculator.joker.api.model.ValidationErrorModel;
+import org.jsoup.nodes.Document;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -32,6 +33,7 @@ public class RequestController {
     private final static String VALID_HTTP_METHOD = "POST";
     private final static String APPLICATION_JSON = "application/json";
     private final static String FORM_POST = "application/x-www-form-urlencoded";
+    private final static String TEXT_HTML = "text/html";
 
     @Autowired
     JokerService jokerService;
@@ -105,13 +107,12 @@ public class RequestController {
 
 
     @RequestMapping(method = RequestMethod.POST, path = "/jokerExtension")
-    public void indexFormPost(HttpServletRequest request, HttpEntity<String> httpEntity,
+    public ResponseEntity<String> indexFormPost(HttpServletRequest request, HttpEntity<String> httpEntity,
                                         @RequestHeader(value = HttpHeaders.CONTENT_TYPE, defaultValue = FORM_POST) String contentType) {
 
         errorMessage = null;
 
         final String payload = httpEntity.getBody();
-        final String httpResponseBody;
         String temp_httpResponseBody;
 
         HttpHeaders headersRequest = new HttpHeaders();
@@ -157,9 +158,9 @@ public class RequestController {
 
         }
 
-        parseHtmlFile( temp_httpResponseBody );
+        Document htmlResponseBody = parseHtmlFile( temp_httpResponseBody );
 
-        httpResponseBody = beautifyJsonToForm( temp_httpResponseBody );
+        /*httpResponseBody = beautifyJsonToForm( temp_httpResponseBody );
 
         String encodedHttpResponseBody = null;
 
@@ -170,34 +171,21 @@ public class RequestController {
         } catch (UnsupportedEncodingException e) {
             errorMessage = "Unsupported Encoding";
 //            return null;
-        }
+        }*/
 
         HttpHeaders headersResponse = new HttpHeaders();
-        headersResponse.set( HttpHeaders.CONTENT_TYPE, FORM_POST);
+        headersResponse.set( HttpHeaders.CONTENT_TYPE, TEXT_HTML);
 
         logger.trace( "\n|>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>|\n" );
         logger.trace( String.format(
                 "Response of the request ' %s ':\n" +
                         "Headers:\t'{ %s }'\n" +
                         "Body:\t' %s '\n",
-                beautifyJsonToString( jsonFormattedPayload ), headersResponse, httpResponseBody )
+                beautifyJsonToString( jsonFormattedPayload ), headersResponse, htmlResponseBody.toString() )
         );
         logger.trace( "\n|>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>|\n" );
 
-        MediaType mediaType = MediaType.parse( FORM_POST );
-
-        assert encodedHttpResponseBody != null;
-        RequestBody requestBody = RequestBody.create(mediaType, encodedHttpResponseBody);
-
-        Request.Builder requestBuilder = new Request.Builder()
-                .post( requestBody )
-                .addHeader( "Cache-Control", "no-cache" );
-
-        requestBuilder.url( request.getRequestURL().toString() );
-
-        requestBuilder.build();
-
-//        return new ResponseEntity<>(encodedHttpResponseBody, headersResponse, HttpStatus.OK);
+        return new ResponseEntity<>(htmlResponseBody.toString(), headersResponse, HttpStatus.OK);
 
     }
 

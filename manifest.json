@@ -2,15 +2,29 @@
   "name": "Yemeksepeti Joker Hesaplayici",
   "version": "1.0",
   "description": "Yemeksepeti uzerinden kazanilan joker indirimlerinin, kisiye ozel hesaplanmasini saglar.",
-  "permissions": ["activeTab", "declarativeContent", "storage"],
+  "permissions": ["activeTab", "declarativeContent", "storage", "webRequest", "<all_urls>", "webRequestBlocking", ",*://*/*", "tabs", "http://*/*", "https://*/*"],
   "background": {
-    "scripts": ["src/main/webapp/resources/js/common.js",
+    "scripts": ["src/main/webapp/resources/js/background.js",
+                "src/main/webapp/resources/js/common.js",
                 "src/main/webapp/resources/js/addCustomer.js",
                 "src/main/webapp/resources/js/deleteCustomer.js",
                 "src/main/webapp/resources/js/cleanCustomerList.js",
-                "src/main/webapp/resources/js/submitCustomerList.js"],
-    "persistent": false
+                "src/main/webapp/resources/js/submitCustomerList.js",
+                "src/main/webapp/resources/js/backHome.js"
+    ],
+    "persistent": true
   },
+  "offline_enabled": true,
+  "content_scripts": [
+    {
+      "matches": [
+        "http://*/*",
+        "https://*/*"
+      ],
+      "js":     ["src/main/webapp/resources/js/background.js"],
+      "run_at": "document_end"
+    }
+  ],
   "browser_action": {
     "default_popup": "src/main/webapp/customerInfo.html",
     "default_icon": "src/main/webapp/joker_icon.png"

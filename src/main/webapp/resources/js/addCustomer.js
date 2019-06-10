@@ -1,5 +1,6 @@
 let name, initialCost, iterator = 0;
 let inputForm = document.getElementById('input_form');
+let initialCostField = document.getElementById('initial_cost');
 let addButton = document.getElementById('add_button');
 
 function addRow(key, value) {
@@ -46,6 +47,12 @@ function addRow(key, value) {
     iterator = iterator + 1;
 
 }
+
+initialCostField.oninput = function () {
+    if (this.value.length > 6) {
+        this.value = this.value.slice(0,6);
+    }
+};
 
 addButton.onclick = function() {
 

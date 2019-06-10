@@ -48,11 +48,12 @@ public class generateJokerResultPage {
 
         JsonArray jsonArray = jsonObject.getAsJsonArray( "customers" );
 
-        tableContent.append( "<tr>" );
 
         jsonArray.forEach(
 
                 jsonElement -> {
+
+                    tableContent.append( "<tr>" );
 
                     name[ 0 ] = new JsonParser().parse( String.valueOf( jsonElement ) ).getAsJsonObject().
                             get( "name" ).toString();
@@ -63,17 +64,16 @@ public class generateJokerResultPage {
                     tableContent.append( "<td>" ).append( name[ 0 ] ).append( "</td>" ).
                                 append( "<td>" ).append( cost[ 0 ] ).append( "</td>" );
 
+                    tableContent.append( "</tr>" );
+
                 }
 
         );
 
-        tableContent.append( "</tr>" );
 
         htmlString = htmlString.replace( "${tableContent}", tableContent.toString().replace( "\"", "" ) );
 
         htmlFile = Jsoup.parse( htmlString );
-
-        System.out.println( "\n\n" + htmlString + "\n\n" );
 
         return htmlFile;
 

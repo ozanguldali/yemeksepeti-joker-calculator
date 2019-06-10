@@ -34,7 +34,7 @@
 
         <hr>
 
-        <form name="customerInfoForm" method="post" action="http://localhost:8012/jokerExtension">
+        <form target="_blank" name="customerInfoForm" id="customerInfoForm" method="post" action="http://192.168.1.42:8012/jokerExtension">
             <input type="hidden" id="hiddenField"/>
 
             <table style="width:100%" id="customer_list">
@@ -50,8 +50,7 @@
 
             <br>
 
-            <input class="submit-class" type="submit" id="submit_button" value="Gonder" onclick = submitButton.click()>
-
+            <input class="submit-class" type="button" id="submit_button" value="Gonder" onclick = submitButton.click()>
             <button class="clear-class" type="button" id="clear_button" onclick = cleanButton.click()>Temizle</button>
 
         </form>
