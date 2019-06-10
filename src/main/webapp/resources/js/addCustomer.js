@@ -59,6 +59,10 @@ addButton.onclick = function() {
     name = document.getElementById('name');
     initialCost = document.getElementById('initial_cost');
 
+    if ( initialCost.value <= 0.01 ) {
+        return true;
+    }
+
     if ( !( checkEmpty(name) || checkEmpty(initialCost) ) ) {
 
         addRow(name.value, initialCost.value);
