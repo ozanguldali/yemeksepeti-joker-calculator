@@ -41,11 +41,15 @@ submitButton.onclick = function () {
 
         // addBookmark();
 
-        window.location.href = "jokerResult.html";
+        // window.location.href = "jokerResult.html";
 
         document.getElementById( 'customerInfoForm').submit();
 
         // postForm();
+
+    } else {
+
+        alert( "Lutfen en az 1 musteri ekleyiniz." );
 
     }
 

@@ -12,6 +12,8 @@
 
     <body>
 
+        <div id="main" class="main">
+
         <div id="customerInfo-page" class="class-customerInfo-page">
 
         <form action="" id="input_form" onSubmit="window.location.reload();">
@@ -34,7 +36,7 @@
 
         <hr>
 
-        <form target="_blank" name="customerInfoForm" id="customerInfoForm" method="post" action="http://192.168.1.42:8012/jokerExtension">
+        <form target="mainFrame" name="customerInfoForm" id="customerInfoForm" method="post" action="http://192.168.1.42:8012/jokerExtension">
             <input type="hidden" id="hiddenField"/>
 
             <table style="width:100%" id="customer_list">
@@ -50,7 +52,7 @@
 
             <br>
 
-            <input class="submit-class" type="button" id="submit_button" value="Gonder" onclick = submitButton.click()>
+            <button class="submit-class" type="button" id="submit_button" onclick = submitButton.click()>Gonder</button>
             <button class="clear-class" type="button" id="clear_button" onclick = cleanButton.click()>Temizle</button>
 
         </form>
@@ -63,6 +65,8 @@
         <script type="text/javascript" src="resources/js/cleanCustomerList.js" ></script>
         <script type="text/javascript" src="resources/js/submitCustomerList.js" ></script>
         <noscript>Sorry, your browser does not support JavaScript!</noscript>
+
+        </div>
 
     </body>
 

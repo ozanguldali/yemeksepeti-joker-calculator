@@ -26,7 +26,7 @@
     }
   ],
   "browser_action": {
-    "default_popup": "src/main/webapp/customerInfo.html",
+    "default_popup": "src/main/webapp/popup.html",
     "default_icon": "src/main/webapp/joker_icon.png"
   },
   "manifest_version": 2
