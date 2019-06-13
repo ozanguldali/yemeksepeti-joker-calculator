@@ -14,7 +14,15 @@
 
         <div id="main" class="main">
 
-        <div id="customerInfo-page" class="class-customerInfo-page">
+        <div class="alert">
+
+            <span class="close-info-btn" id="close_alert" onclick = closeAlertButton.click()>&times;</span>
+            Toplu siparislerde; joker indirimi uygulandiktan sonra, her musterinin aldigi
+            urunlere gore ne kadar odemesi gerektigini hesaplar.
+
+        </div>
+
+        <div id="customerInfo-page" class="customerAdd-page">
 
         <form action="" id="input_form" onSubmit="window.location.reload();">
 
@@ -33,6 +41,10 @@
             <input class="input-add-class" type="submit" value="Ekle" id="add_button" size="10" onclick = addButton.click()>
 
         </form>
+
+        </div>
+
+        <div id="customerList" class="customerList-page" hidden>
 
         <hr>
 
@@ -60,6 +72,7 @@
         </div>
 
         <script type="text/javascript" src="resources/js/common.js" ></script>
+        <script type="text/javascript" src="resources/js/closeInfoAlert.js" ></script>
         <script type="text/javascript" src="resources/js/addCustomer.js" ></script>
         <script type="text/javascript" src="resources/js/deleteCustomer.js" ></script>
         <script type="text/javascript" src="resources/js/cleanCustomerList.js" ></script>
