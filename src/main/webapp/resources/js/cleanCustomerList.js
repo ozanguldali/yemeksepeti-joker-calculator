@@ -10,4 +10,6 @@ cleanButton.onclick = function () {
         table.deleteRow( i );
     }
 
+    customerListDiv.hidden = true;
+
 };

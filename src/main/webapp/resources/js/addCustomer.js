@@ -2,6 +2,7 @@ let name, initialCost, iterator = 0;
 let inputForm = document.getElementById('input_form');
 let initialCostField = document.getElementById('initial_cost');
 let addButton = document.getElementById('add_button');
+let customerListDiv = document.getElementById( 'customerList' );
 
 function addRow(key, value) {
 
@@ -57,6 +58,7 @@ initialCostField.oninput = function () {
 addButton.onclick = function() {
 
     name = document.getElementById('name');
+
     initialCost = document.getElementById('initial_cost');
 
     if ( initialCost.value <= 0.01 ) {
@@ -72,6 +74,9 @@ addButton.onclick = function() {
     }
 
     inputForm.reset();
+
+    customerListDiv.hidden = false;
+
     return false;
 
 };
