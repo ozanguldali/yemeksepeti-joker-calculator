@@ -1,5 +1,7 @@
 package util;
 
+import helper.CalculatorHelper;
+
 import java.util.Collections;
 import java.util.HashMap;
 
@@ -75,6 +77,7 @@ public class CalculatorUtil {
         }
 
         discountPercent = ( totalAmount - totalDiscountAmount ) / totalAmount;
+        discountPercent = CalculatorHelper.round( discountPercent, 4 );
 
         System.out.println( "The percentage of discount which will be applied to each customer is: " +
                 discountPercent * 100 + " %\n" );

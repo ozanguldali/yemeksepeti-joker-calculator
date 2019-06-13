@@ -51,7 +51,7 @@ public class ResponseModel {
 
         totalActualCost = String.valueOf( totalAmount );
         totalDiscountedCost = String.valueOf( totalDiscountAmount );
-        totalDiscountRatio = String.valueOf( discountPercent );
+        totalDiscountRatio = "%" + discountPercent * 100;
         totalRoundedCost = String.valueOf( roundedCost );
 
         customerInfoService.clear();
