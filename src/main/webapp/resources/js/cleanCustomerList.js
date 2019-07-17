@@ -1,4 +1,4 @@
-let cleanButton = document.getElementById('clear_button');
+// let cleanButton = document.getElementById('clear_button');
 
 cleanButton.onclick = function () {
 

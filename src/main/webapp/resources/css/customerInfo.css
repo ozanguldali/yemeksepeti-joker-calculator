@@ -50,6 +50,11 @@ input.input-info-class {
     width: 205px;
     text-align: left;
 }
+
+input.input-customer-class {
+    text-align: left;
+}
+
 input.input-add-class {
     text-align: left;
 }

@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Joker Sonucu</title>
+    <script src="resources/jquery/jquery-3.4.1.min.js"></script>
+    <style>
+
+        .class-jokerResult-page {
+            width: 300px;
+            font-size: 13px;
+        }
+
+        .class-jokerResult-page {
+            background-color: white;
+            width: 300px;
+            height: 275px;
+            overflow: auto;
+        }
+
+        caption {
+            display: table-caption;
+            align: top;
+            text-align: center;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        table, td, th {
+            border: 1px solid black;
+            text-align: center;
+        }
+
+    </style>
+</head>
+<!--    <link rel="stylesheet" type="text/css" href="resources/css/jokerResult.css">-->
+<body>
+<div id="jokerResult-page" class="class-jokerResult-page">
+    <table style="width:100%" id="discount_list">
+        <caption>
+            <b> Joker Indirimi Ozeti </b>
+        </caption>
+        <tbody>
+        <tr>
+            <td>Toplam Alisveris Tutari</td>
+            <td>12.0</td>
+        </tr>
+        <tr>
+            <td>Indirim Yuzdesi</td>
+            <td>0.0</td>
+        </tr>
+        <tr>
+            <td>Joker Indirimli Tutar</td>
+            <td>12.0</td>
+        </tr>
+        <tr>
+            <td>Yuvarlanmis Odenecek Tutar</td>
+            <td>12.0</td>
+        </tr>
+        </tbody>
+    </table>
+    <hr>
+    <table style="width:100%" id="toPay_list">
+        <caption>
+            <b> Odenecek Tutar Tablosu </b>
+        </caption>
+        <tbody>
+        <tr>
+            <th>Isim - Soyisim</th>
+            <!--                    <th>Jokersiz Tutar</th>-->
+            <!--                    <th>Jokerli Tutar</th>-->
+            <th>Odenecek Tutar</th>
+        </tr>
+        <tr>
+            <td>ozan</td>
+            <td>12.0</td>
+        </tr>
+        </tbody>
+    </table>
+    <br>
+    <button class="back-class" type="button" id="back_button" onclick="backButton.click()">Geri</button>
+</div>
+<script type="text/javascript" src="resources/js/common.js"></script>
+<script type="text/javascript" src="resources/js/backHome.js"></script>
+<noscript>
+    Sorry, your browser does not support JavaScript!
+</noscript>
+</body>
+</html>

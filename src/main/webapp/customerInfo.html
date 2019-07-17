@@ -48,7 +48,7 @@
 
         <hr>
 
-        <form target="mainFrame" name="customerInfoForm" id="customerInfoForm" method="post" action="https://jokercalculator.herokuapp.com/jokerExtension">
+        <form target="mainFrame" name="customerInfoForm" id="customerInfoForm" method="post" action="http://localhost:8012/jokerExtension">
             <input type="hidden" id="hiddenField"/>
 
             <table style="width:100%" id="customer_list">
@@ -64,7 +64,7 @@
 
             <br>
 
-            <button class="submit-class" type="button" id="submit_button" onclick = submitButton.click()>Gonder</button>
+            <button class="submit-class" type="submit" id="submit_button" onclick = submitButton.click()>Gonder</button>
             <button class="clear-class" type="button" id="clear_button" onclick = cleanButton.click()>Temizle</button>
 
         </form>
@@ -75,8 +75,8 @@
         <script type="text/javascript" src="resources/js/closeInfoAlert.js" ></script>
         <script type="text/javascript" src="resources/js/addCustomer.js" ></script>
         <script type="text/javascript" src="resources/js/deleteCustomer.js" ></script>
-        <script type="text/javascript" src="resources/js/cleanCustomerList.js" ></script>
         <script type="text/javascript" src="resources/js/submitCustomerList.js" ></script>
+        <script type="text/javascript" src="resources/js/cleanCustomerList.js" ></script>
         <noscript>Sorry, your browser does not support JavaScript!</noscript>
 
         </div>

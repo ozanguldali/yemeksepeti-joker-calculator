@@ -9,31 +9,18 @@ import org.jsoup.nodes.Document;
 import java.io.File;
 import java.io.IOException;
 
-public class generateJokerResultPage {
+public class HtmlParser {
 
     private static final String PROJECT_DIR = System.getProperty("user.dir");
     private static final String SLASH = System.getProperty("file.separator");
-    private static final String JOKER_RESULT_HTML_FILE = PROJECT_DIR + SLASH + "src" + SLASH + "main" + SLASH + "webapp" + SLASH + "jokerResult.html";
+    private static final String JOKER_RESULT_HTML_FILE  = PROJECT_DIR + SLASH + "src" + SLASH + "main" + SLASH + "webapp" + SLASH + "jokerResult.html";
+    private static final String ERROR_PAGE              = PROJECT_DIR + SLASH + "src" + SLASH + "main" + SLASH + "webapp" + SLASH + "errorPage.html";
 
-    public static Document parseHtmlFile(String jsonString) {
+    public static Document parseResultPage(String jsonString) {
 
         JsonObject jsonObject = new JsonParser().parse( jsonString ).getAsJsonObject();
 
-        Document htmlFile = null;
-
-        String htmlString;
-
-        try {
-
-            htmlFile = Jsoup.parse( new File( JOKER_RESULT_HTML_FILE ),  "ISO-8859-1" );
-
-        } catch (IOException e) {
-
-            e.printStackTrace();
-        }
-
-        assert htmlFile != null;
-        htmlString = htmlFile.toString();
+        String htmlString = convertHtmlFileToString( JOKER_RESULT_HTML_FILE );
 
         htmlString = htmlString.replace( "${totalActualCost}", jsonObject.get( "totalActualCost" ).getAsString() ).
                                 replace( "${totalDiscountRatio}", jsonObject.get( "totalDiscountRatio" ).getAsString() ).
@@ -73,9 +60,38 @@ public class generateJokerResultPage {
 
         htmlString = htmlString.replace( "${tableContent}", tableContent.toString().replace( "\"", "" ) );
 
-        htmlFile = Jsoup.parse( htmlString );
+        return Jsoup.parse( htmlString );
 
-        return htmlFile;
+    }
+
+    public static Document parseErrorPage() {
+
+        String htmlString = convertHtmlFileToString( ERROR_PAGE );
+
+        return Jsoup.parse( htmlString );
+
+    }
+
+    private static String convertHtmlFileToString( final String fileName) {
+
+
+        Document htmlFile = null;
+
+        String htmlString;
+
+        try {
+
+            htmlFile = Jsoup.parse( new File( fileName ),  "ISO-8859-1" );
+
+        } catch (IOException e) {
+
+            e.printStackTrace();
+        }
+
+        assert htmlFile != null;
+        htmlString = htmlFile.toString();
+
+        return htmlString;
 
     }
 

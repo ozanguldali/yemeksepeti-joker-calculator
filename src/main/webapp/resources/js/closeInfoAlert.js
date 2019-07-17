@@ -1,4 +1,4 @@
-let closeAlertButton = document.getElementById("close_alert");
+//let closeAlertButton = document.getElementById("close_alert");
 let i;
 
 closeAlertButton.onclick = function () {

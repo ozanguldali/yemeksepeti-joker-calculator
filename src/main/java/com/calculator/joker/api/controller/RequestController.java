@@ -11,21 +11,14 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.calculator.joker.api.service.JokerService;
 
-import okhttp3.MediaType;
-import okhttp3.Request;
-import okhttp3.RequestBody;
-
 import javax.servlet.http.HttpServletRequest;
 
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
-import java.nio.charset.StandardCharsets;
-
 import static com.calculator.joker.api.util.ObjectMapperUtil.*;
-import static com.calculator.joker.popup.model.generateJokerResultPage.parseHtmlFile;
-import static util.LoggerUtil.logger;
+import static com.calculator.joker.popup.model.HtmlParser.parseErrorPage;
+import static com.calculator.joker.popup.model.HtmlParser.parseResultPage;
 
 import static com.calculator.joker.api.model.ValidationErrorModel.errorMessage;
+import static util.LoggerUtil.*;
 
 @RestController
 public class RequestController {
@@ -56,15 +49,7 @@ public class RequestController {
 
         headersRequest.set( HttpHeaders.CONTENT_TYPE, APPLICATION_JSON);
 
-        logger.trace( "\n|<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<|\n" );
-        logger.trace( String.format(
-                    "Got a request with\n" +
-                        "Method:\t'{ %s }'\n" +
-                        "Headers:\t'{ %s }'\n" +
-                        "Body:\t' %s '\n",
-                request.getMethod(), headersRequest, beautifyJsonToString( payload ) )
-        );
-        logger.trace( "\n|<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<|\n" );
+        restRequestLogger( request.getMethod(), headersRequest, beautifyJsonToString( payload ) );
 
         if ( !request.getMethod().equals( VALID_HTTP_METHOD ) || payload == null) {
 
@@ -92,14 +77,7 @@ public class RequestController {
         HttpHeaders headersResponse = new HttpHeaders();
         headersResponse.set( HttpHeaders.CONTENT_TYPE, APPLICATION_JSON);
 
-        logger.trace( "\n|>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>|\n" );
-        logger.trace( String.format(
-                    "Response of the request ' %s ':\n" +
-                        "Headers:\t'{ %s }'\n" +
-                        "Body:\t' %s '\n",
-                beautifyJsonToString( payload ), headersResponse, httpResponseBody )
-        );
-        logger.trace( "\n|>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>|\n" );
+        restResponseLogger( beautifyJsonToString( payload ), headersResponse, httpResponseBody );
 
         return new ResponseEntity<>(httpResponseBody, headersResponse, HttpStatus.OK);
 
@@ -124,27 +102,18 @@ public class RequestController {
         headersRequest.set( HttpHeaders.CONTENT_TYPE, FORM_POST);
         String jsonFormattedPayload = beautifyFormToJson( payload );
 
-        logger.trace( "\n|<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<|\n" );
-        logger.trace( String.format(
-                "Got a request with\n" +
-                        "Method:\t'{ %s }'\n" +
-                        "Headers:\t'{ %s }'\n" +
-                        "Body:\t' %s '\n",
-                request.getMethod(), headersRequest, beautifyJsonToString( jsonFormattedPayload ) )
-        );
-        logger.trace( "\n|<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<|\n" );
-
+        restRequestLogger( request.getMethod(), headersRequest, beautifyJsonToString( jsonFormattedPayload ) );
 
         if ( !request.getMethod().equals( VALID_HTTP_METHOD ) || jsonFormattedPayload == null) {
 
             logger.error( "Invalid request with payload { " + jsonFormattedPayload + " }" );
-//            return new ResponseEntity<>( "Invalid Request", HttpStatus.METHOD_NOT_ALLOWED );
+            return new ResponseEntity<>( "Invalid Request", HttpStatus.METHOD_NOT_ALLOWED );
 
         }
 
         if ( !contentType.replace(" ", "").toLowerCase().trim().contains(FORM_POST) ){
             logger.error( "Unsupported Media Type: " + contentType );
-//            return new ResponseEntity<>("Unsupported Media Type", HttpStatus.UNSUPPORTED_MEDIA_TYPE);
+            return new ResponseEntity<>("Unsupported Media Type", HttpStatus.UNSUPPORTED_MEDIA_TYPE);
         }
 
 
@@ -158,32 +127,12 @@ public class RequestController {
 
         }
 
-        Document htmlResponseBody = parseHtmlFile( temp_httpResponseBody );
-
-        /*httpResponseBody = beautifyJsonToForm( temp_httpResponseBody );
-
-        String encodedHttpResponseBody = null;
-
-        try {
-
-            encodedHttpResponseBody = URLEncoder.encode(httpResponseBody, StandardCharsets.UTF_8.name());
-
-        } catch (UnsupportedEncodingException e) {
-            errorMessage = "Unsupported Encoding";
-//            return null;
-        }*/
+        Document htmlResponseBody = errorMessage == null ? parseResultPage( temp_httpResponseBody ) : parseErrorPage();
 
         HttpHeaders headersResponse = new HttpHeaders();
         headersResponse.set( HttpHeaders.CONTENT_TYPE, TEXT_HTML);
 
-        logger.trace( "\n|>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>|\n" );
-        logger.trace( String.format(
-                "Response of the request ' %s ':\n" +
-                        "Headers:\t'{ %s }'\n" +
-                        "Body:\t' %s '\n",
-                beautifyJsonToString( jsonFormattedPayload ), headersResponse, htmlResponseBody.toString() )
-        );
-        logger.trace( "\n|>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>|\n" );
+        restResponseLogger( beautifyJsonToString( jsonFormattedPayload ), headersResponse, htmlResponseBody.toString() );
 
         return new ResponseEntity<>(htmlResponseBody.toString(), headersResponse, HttpStatus.OK);
 
