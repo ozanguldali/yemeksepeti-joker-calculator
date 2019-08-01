@@ -21,10 +21,11 @@ import static com.calculator.joker.api.model.ValidationErrorModel.errorMessage;
 public class JokerService {
 
     private static HashMap<String, Double> customerInfoService = new HashMap<>();
+    public static RequestModel requestModel;
 
     public ResponseModel getResponse(String payload) {
 
-        RequestModel requestModel = new RequestModel( payload );
+        requestModel = new RequestModel( payload );
 
         customerInfoService.clear();
         customerInfo.clear();

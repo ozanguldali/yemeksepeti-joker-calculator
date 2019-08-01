@@ -1,5 +1,6 @@
 package com.calculator.joker.api.model;
 
+import java.text.DecimalFormat;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -14,6 +15,8 @@ import static util.ResultUtil.roundedCost;
 public class ResponseModel {
 
     private ResponseModel responseModel;
+
+    private static DecimalFormat decimalFormat = new DecimalFormat( "#.##" );
 
     private List<Customer> customers;
 
@@ -51,7 +54,7 @@ public class ResponseModel {
 
         totalActualCost = String.valueOf( totalAmount );
         totalDiscountedCost = String.valueOf( totalDiscountAmount );
-        totalDiscountRatio = "%" + discountPercent * 100;
+        totalDiscountRatio = "%" + decimalFormat.format( discountPercent * 100 );
         totalRoundedCost = String.valueOf( roundedCost );
 
         customerInfoService.clear();

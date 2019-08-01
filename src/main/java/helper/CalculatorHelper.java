@@ -5,14 +5,39 @@ import java.math.RoundingMode;
 import java.util.*;
 
 import static app.ConsoleMain.customerInfo;
-import static app.ConsoleMain.customerSize;
-import static util.CalculatorUtil.errorMap;
+import static util.CalculatorUtil.roundingValueMap;
 import static util.CalculatorUtil.totalDiscountAmount;
 
 public class CalculatorHelper {
 
-    private static double[] roundMultiplier = { 1.0, 2.0, 4.0, 5.0, 10.0, 20.0 };
+    public static double[] roundMultiplier = { 1.0, 2.0, 4.0, 10.0, 20.0 };
     private static int selector = 0;
+
+    public static void getSelected(float selected) {
+
+        double totalRoundedAmount = 0;
+        HashMap<String, Double> tempMap = new HashMap<>();
+
+        for ( String name : customerInfo.keySet() ) {
+
+            double value = customerInfo.get( name );
+            double optimalValue;
+
+            BigDecimal bigDecimal = new BigDecimal( value );
+
+            optimalValue = ( Math.round( bigDecimal.doubleValue() * (double) selected ) / (double) selected );
+
+            totalRoundedAmount = totalRoundedAmount + optimalValue;
+
+            tempMap.put( name, optimalValue );
+
+        }
+
+        double error = Math.abs( totalDiscountAmount - totalRoundedAmount ) / totalDiscountAmount;
+
+        roundingValueMap.put( error, tempMap );
+
+    }
 
     public static void getOptimal() {
 
@@ -37,8 +62,8 @@ public class CalculatorHelper {
         double error = Math.abs( totalDiscountAmount - totalRoundedAmount ) / totalDiscountAmount;
 
         double threshHold = 0.02;
-        if ( !( error > threshHold) )
-            errorMap.put( error, tempMap );
+        if ( !( error > threshHold ) )
+            roundingValueMap.put( error, tempMap );
 
         selector++;
 

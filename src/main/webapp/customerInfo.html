@@ -26,11 +26,11 @@
 
         <form action="" id="input_form" onSubmit="window.location.reload();">
 
-            <b> Musteri Ekleme Formu </b>
+            <b> Müşteri Ekleme Formu </b>
 
             <br>
 
-            <label for="name">Isim - Soyisim: </label><br>
+            <label for="name">İsim - Soyisim: </label><br>
                 <input required class="input-info-class" type="text" id="name" size="30" minlength="1" maxlength="30"
                        placeholder="Isim Soyisim"><br>
 
@@ -48,12 +48,12 @@
 
         <hr>
 
-        <form target="mainFrame" name="customerInfoForm" id="customerInfoForm" method="post" action="https://jokercalculator.herokuapp.com/jokerExtension">
+        <form target="mainFrame" name="customerInfoForm" id="customerInfoForm" method="post" action="http://localhost:8012/jokerExtension">
             <input type="hidden" id="hiddenField"/>
 
             <table style="width:100%" id="customer_list">
 
-                <caption> <b> Musteri Listesi </b> </caption>
+                <caption> <b> Müşteri Listesi </b> </caption>
 
                 <tr>
                     <th>Isim - Soyisim</th>
@@ -63,8 +63,32 @@
             </table>
 
             <br>
+            <b> Yuvarlanmak İstenen Ondalık Değer: </b>
+            <br>
 
-            <button class="submit-class" type="submit" id="submit_button" onclick = submitButton.click()>Gonder</button>
+            <label>
+                <input type="radio" id="decimal-5" name="roundingValue" value="0.05">
+            </label> 0.05
+            <label>
+                <input type="radio" id="decimal-10" name="roundingValue" value="0.10">
+            </label> 0.10
+            <label>
+                <input type="radio" id="decimal-25" name="roundingValue" value="0.25">
+            </label> 0.25
+            <label>
+                <input type="radio" id="decimal-50" name="roundingValue" value="0.50">
+            </label> 0.50
+            <label>
+                <input type="radio" id="decimal-100" name="roundingValue" value="1.00">
+            </label> 1.00
+            <label>
+                <input type="radio" id="decimal-0" name="roundingValue" value="0" checked>
+            </label> Default
+
+            <br>
+            <br>
+
+            <button class="submit-class" type="submit" id="submit_button" onclick = submitButton.click()>Gönder</button>
             <button class="clear-class" type="button" id="clear_button" onclick = cleanButton.click()>Temizle</button>
 
         </form>

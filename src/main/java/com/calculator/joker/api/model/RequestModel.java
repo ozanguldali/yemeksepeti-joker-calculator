@@ -5,8 +5,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
+import static helper.CalculatorHelper.roundMultiplier;
 import static util.LoggerUtil.logger;
 
 import static com.calculator.joker.api.model.ValidationErrorModel.errorMessage;
@@ -29,6 +31,31 @@ public class RequestModel {
 
             logger.error( "Request is not a valid Json Object:\t" + e.getMessage() );
             errorMessage = "Request is not a valid Json Object";
+
+        }
+
+        try {
+
+            final float roundingValue = jsonObject.get( "roundingValue" ).getAsFloat();
+
+            if (Arrays.stream( roundMultiplier ).anyMatch( i -> i == 1 / roundingValue ) ) {
+
+                logger.trace( "Rounding Value has been set as: [" + roundingValue + "]" );
+
+                setRoundingValue( 1 / roundingValue );
+
+            } else {
+
+                logger.trace( "Rounding Value [" + roundingValue + "] is not matched, " +
+                        "hence default error analysing will be performed." );
+                setRoundingValue( 0 );
+
+            }
+
+        } catch (Exception e) {
+
+            logger.trace( "Rounding Value is not found, hence default error analysing will be performed." );
+            setRoundingValue( 0 );
 
         }
 
@@ -88,6 +115,8 @@ public class RequestModel {
 
     }
 
+    private float roundingValue;
+
     private List<Customer> customers;
 
     public List<Customer> getCustomers() {
@@ -96,6 +125,14 @@ public class RequestModel {
 
     private void setCustomers(List<Customer> customers) {
         this.customers = customers;
+    }
+
+    public float getRoundingValue() {
+        return roundingValue;
+    }
+
+    private void setRoundingValue(float roundingValue) {
+        this.roundingValue = roundingValue;
     }
 
 }

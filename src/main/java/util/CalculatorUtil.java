@@ -6,11 +6,12 @@ import java.util.Collections;
 import java.util.HashMap;
 
 import static app.ConsoleMain.customerInfo;
+import static com.calculator.joker.api.service.JokerService.requestModel;
 import static helper.CalculatorHelper.*;
 
 public class CalculatorUtil {
 
-    public static HashMap<Double, HashMap<String, Double>> errorMap = new HashMap<>();
+    public static HashMap<Double, HashMap<String, Double>> roundingValueMap = new HashMap<>();
 
     public static double totalAmount = 0;
     public static double totalDiscountAmount;
@@ -86,7 +87,7 @@ public class CalculatorUtil {
 
     public static void calculateCustomerDiscount() {
 
-        errorMap.clear();
+        roundingValueMap.clear();
 
         customerInfo.forEach(
                 ( name, amount ) -> {
@@ -99,14 +100,17 @@ public class CalculatorUtil {
         }
         );
 
-        getOptimal();
+
+        if ( requestModel.getRoundingValue() != 0 )
+            getSelected( requestModel.getRoundingValue() );
+        else
+            getOptimal();
 
         HashMap<String, Double> tempMap;
 
-        tempMap = errorMap.get( Collections.min( errorMap.keySet() ) );
+        tempMap = roundingValueMap.get( Collections.min( roundingValueMap.keySet() ) );
 
-        for ( String name : customerInfo.keySet() )
-            customerInfo.put( name, tempMap.get( name ) );
+        customerInfo.replaceAll( ( n, v ) -> tempMap.get( n ) );
 
     }
 

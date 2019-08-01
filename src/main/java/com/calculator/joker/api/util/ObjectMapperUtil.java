@@ -64,29 +64,36 @@ public class ObjectMapperUtil {
 
             String[] pair = s.split("=");
 
-            StringBuilder valuePair = new StringBuilder();
+            if ( pair[0].equals( "roundingValue" ) ) {
 
-            for ( int k = 1; k < pair.length; k++ )
-                valuePair.append( pair[ k ] );
+                jsonObject.addProperty( pair[ 0 ], Float.valueOf( pair[ 1 ] ) );
 
-            String[] firstSplitArr = pair[ 0 ].split( "\\[" );
-            String firstSplit = firstSplitArr[ firstSplitArr.length - 1 ];
+            } else {
 
-            String key = firstSplitArr[ 0 ];
+                StringBuilder valuePair = new StringBuilder();
 
-            String[] secondSplitArr = firstSplit.split( "]" );
-            String secondSplit = secondSplitArr[ 0 ];
+                for ( int k = 1; k < pair.length; k++ )
+                    valuePair.append( pair[ k ] );
 
-            tempHashMap.put( key, valuePair.toString() );
-            if ( tempHashMap.keySet().size() % 2 == 0 ) {
+                String[] firstSplitArr = pair[ 0 ].split( "\\[" );
+                String firstSplit = firstSplitArr[ firstSplitArr.length - 1 ];
 
-                cloneMap = tempHashMap.clone();
-                tempHashMap.clear();
+                String key = firstSplitArr[ 0 ];
+
+                String[] secondSplitArr = firstSplit.split( "]" );
+                String secondSplit = secondSplitArr[ 0 ];
+
+                tempHashMap.put( key, valuePair.toString() );
+                if ( tempHashMap.keySet().size() % 2 == 0 ) {
+
+                    cloneMap = tempHashMap.clone();
+                    tempHashMap.clear();
+
+                }
+
+                hashMap.put( Integer.valueOf( secondSplit ), (HashMap<String, String>) cloneMap);
 
             }
-
-            hashMap.put( Integer.valueOf( secondSplit ), (HashMap<String, String>) cloneMap);
-
 
         }
 

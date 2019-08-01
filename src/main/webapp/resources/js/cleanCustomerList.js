@@ -10,6 +10,8 @@ cleanButton.onclick = function () {
         table.deleteRow( i );
     }
 
+    defaultDecimal.checked = true;
+
     customerListDiv.hidden = true;
 
 };
