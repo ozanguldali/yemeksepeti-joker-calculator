@@ -4,4 +4,6 @@ backButton.onclick = function () {
 
     window.location.href = "customerInfo.html";
 
+    closeAlertButton.click();
+
 };
