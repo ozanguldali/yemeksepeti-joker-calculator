@@ -1,6 +1,6 @@
 .alert {
     opacity: 1;
-    transition: opacity 0.6s;
+    transition: opacity 3ms;
     padding: 7px;
     background-color: #EF2177;
     color: white;
@@ -16,7 +16,7 @@
     font-size: 15px;
     line-height: 20px;
     cursor: pointer;
-    transition: 0.3s;
+    transition: 3ms;
 }
 
 .close-info-btn:hover {
