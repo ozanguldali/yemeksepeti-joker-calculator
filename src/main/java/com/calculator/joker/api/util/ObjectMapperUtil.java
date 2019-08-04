@@ -9,7 +9,6 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
-import java.util.concurrent.atomic.AtomicInteger;
 
 import static com.calculator.joker.api.model.ValidationErrorModel.errorMessage;
 
@@ -133,7 +132,7 @@ public class ObjectMapperUtil {
 
     }
 
-    public static String beautifyJsonToForm(String json) {
+    /*public static String beautifyJsonToForm(String json) {
 
         JsonObject jsonObject = new JsonParser().parse( json ).getAsJsonObject();
 
@@ -181,6 +180,6 @@ public class ObjectMapperUtil {
 
         return form.toString().replace( "\"", "" );
 
-    }
+    }*/
 
 }

@@ -1,106 +1,107 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 
-    <head>
-        <meta charset="UTF-8">
-        <title>Joker Sonucu</title>
-        <script src="resources/jquery/jquery-3.4.1.min.js" ></script>
-    </head>
+<head>
+    <meta charset="utf-8">
+    <title>Joker Sonucu</title>
+    <script src="resources/jquery/jquery-3.4.1.min.js" ></script>
+</head>
 
-<!--    <link rel="stylesheet" type="text/css" href="resources/css/jokerResult.css">-->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="resources/css/jokerResult.css">
 
-    <style>
+<!--<style>
 
-        .class-jokerResult-page {
-            width: 325px;
-            font-size: 13px;
-        }
+    .class-jokerResult-page {
+        width: 325px;
+        font-size: 13px;
+    }
 
-        .class-jokerResult-page {
-            background-color: white;
-            width: 325px;
-            height: 300px;
-            overflow: auto;
-        }
+    .class-jokerResult-page {
+        background-color: white;
+        width: 325px;
+        height: 300px;
+        overflow: auto;
+    }
 
-        caption {
-            display: table-caption;
-            align: top;
-            text-align: center;
-        }
+    caption {
+        display: table-caption;
+        align: top;
+        text-align: center;
+    }
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
 
-        table, td, th {
-            border: 1px solid black;
-            text-align: center;
-        }
+    table, td, th {
+        border: 1px solid black;
+        text-align: center;
+    }
 
-    </style>
+</style>-->
 
-    <body>
+<body>
 
-        <div class="main">
-        <div id="jokerResult-page" class="class-jokerResult-page">
+<div class="main">
+    <div id="jokerResult-page" class="class-jokerResult-page">
 
-            <table style="width:100%" id="discount_list">
+        <table style="width:100%" id="discount_list">
 
-                <caption> <b> Joker Indirimi Ozeti </b> </caption>
+            <caption> <b> Joker Indirimi Ozeti </b> </caption>
 
-                <tr>
-                    <td>Toplam Alisveris Tutari</td>
-                    <td>${totalActualCost}</td>
-                </tr>
+            <tr>
+                <td>Toplam Alisveris Tutari</td>
+                <td>${totalActualCost}</td>
+            </tr>
 
-                <tr>
-                    <td>Indirim Yuzdesi</td>
-                    <td>${totalDiscountRatio}</td>
-                </tr>
+            <tr>
+                <td>Indirim Yuzdesi</td>
+                <td>${totalDiscountRatio}</td>
+            </tr>
 
-                <tr>
-                    <td>Joker Indirimli Tutar</td>
-                    <td>${totalDiscountedCost}</td>
-                </tr>
+            <tr>
+                <td>Joker Indirimli Tutar</td>
+                <td>${totalDiscountedCost}</td>
+            </tr>
 
-                <tr>
-                    <td>Yuvarlanmis Odenecek Tutar</td>
-                    <td>${totalRoundedCost}</td>
-                </tr>
+            <tr>
+                <td>Yuvarlanmis Odenecek Tutar</td>
+                <td>${totalRoundedCost}</td>
+            </tr>
 
-            </table>
+        </table>
 
-            <hr>
+        <hr>
 
-            <table style="width:100%" id="toPay_list">
+        <table style="width:100%" id="toPay_list">
 
-                <caption> <b> Odenecek Tutar Tablosu </b> </caption>
+            <caption> <b> Odenecek Tutar Tablosu </b> </caption>
 
-                <tr>
-                    <th>Isim - Soyisim</th>
-<!--                    <th>Jokersiz Tutar</th>-->
-<!--                    <th>Jokerli Tutar</th>-->
-                    <th>Odenecek Tutar</th>
-                </tr>
+            <tr>
+                <th>Isim - Soyisim</th>
+                <!--                    <th>Jokersiz Tutar</th>-->
+                <!--                    <th>Jokerli Tutar</th>-->
+                <th>Odenecek Tutar</th>
+            </tr>
 
-                ${tableContent}
+            ${tableContent}
 
-            </table>
+        </table>
 
-            <br>
+        <br>
 
-            <button class="back-class" type="button" id="back_button" onclick = backButton.click()>Geri</button>
+        <button class="back-class" type="button" id="back_button" onclick = backButton.click()>Geri</button>
 
-        </div>
+    </div>
 
-        <script type="text/javascript" src="resources/js/common.js" ></script>
-        <script type="text/javascript" src="resources/js/backHome.js" ></script>
-        <noscript>Sorry, your browser does not support JavaScript!</noscript>
+    <script type="text/javascript" src="resources/js/common.js" ></script>
+    <script type="text/javascript" src="resources/js/backHome.js" ></script>
+    <noscript>Sorry, your browser does not support JavaScript!</noscript>
 
-        </div>
+</div>
 
-    </body>
+</body>
 
 </html>

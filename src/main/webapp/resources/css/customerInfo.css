@@ -1,4 +1,19 @@
+* {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.main {
+
+    background-color: white;
+    width: 335px;
+    height: 310px;
+    overflow: auto;
+    float: left;
+
+}
+
 .alert {
+    width: 90%;
     opacity: 1;
     transition: opacity 3ms;
     padding: 7px;
@@ -22,26 +37,17 @@
 .close-info-btn:hover {
     color: black;
 }
-
-.main {
-
-    background-color: white;
-    width: 325px;
-    height: 300px;
-
-}
-
 .customerAdd-page {
     background-color: white;
     font-size: 13px;
-    width: 325px;
+    width: 95%;
     height: 45%;
     /*overflow: auto;*/
 }
 
 .customerList-page {
     font-size: 13px;
-    width: 325px;
+    width: 95%;
     height: 55%;
     /*overflow: auto;*/
 }

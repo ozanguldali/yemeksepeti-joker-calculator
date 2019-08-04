@@ -1,13 +1,21 @@
-.class-jokerResult-page {
-    width: 325px;
-    font-size: 13px;
+* {
+    font-family: 'Montserrat', sans-serif;
+    overflow: auto;
+}
+
+.main {
+
+    background-color: white;
+    width: 335px;
+    height: 300px;
+
 }
 
 .class-jokerResult-page {
     background-color: white;
-    width: 325px;
-    height: 300px;
-    overflow: auto;
+    width: 95%;
+    height: 100%;
+    font-size: 13px;
 }
 
 caption {
