@@ -6,4 +6,6 @@ backButton.onclick = function () {
 
     // closeAlertButton.click();
 
+    return false;
+
 };
