@@ -1,9 +1,9 @@
 {
   "name": "Yemeksepeti Joker Hesaplayici",
   "short_name": "Joker Hesaplayici",
-  "version": "3.0",
+  "version": "3.2",
   "description": "Yemeksepeti uzerinden kazanilan joker indirimlerinin, kisiye ozel hesaplanmasini saglar.",
-  "permissions": ["webRequest", "webRequestBlocking", "https://jokercalculator.herokuapp.com/jokerExtension/"],
+  "permissions": ["webRequest", "webRequestBlocking"],
   "background": {
     "scripts": ["webapp/resources/js/background.js",
                 "webapp/resources/js/common.js",
@@ -17,16 +17,6 @@
     "persistent": true
   },
   "offline_enabled": true,
-  "content_scripts": [
-    {
-      "matches": [
-        "http://*/*",
-        "https://*/*"
-      ],
-      "js":     ["webapp/resources/js/submitCustomerList.js"],
-      "run_at": "document_end"
-    }
-  ],
   "browser_action": {
     "default_popup": "webapp/popup.html",
     "default_icon": "webapp/joker_icon_resized.png"
