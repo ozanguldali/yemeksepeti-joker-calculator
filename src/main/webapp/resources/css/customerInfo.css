@@ -5,8 +5,8 @@
 .main {
 
     background-color: white;
-    width: 335px;
-    height: 310px;
+    width: 332px;
+    height: 305px;
     overflow: auto;
     float: left;
 
@@ -41,7 +41,7 @@
     background-color: white;
     font-size: 13px;
     width: 95%;
-    height: 45%;
+    height: 40%;
     /*overflow: auto;*/
 }
 
@@ -85,7 +85,7 @@ caption {
 }
 
 table {
-    width: 100%;
+    width: 95%;
     border-collapse: collapse;
 }
 
