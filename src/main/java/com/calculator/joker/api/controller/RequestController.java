@@ -3,7 +3,6 @@ package com.calculator.joker.api.controller;
 import com.calculator.joker.api.model.ResponseModel;
 import com.calculator.joker.api.model.ValidationErrorModel;
 import org.jsoup.nodes.Document;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -28,8 +27,12 @@ public class RequestController {
     private final static String FORM_POST = "application/x-www-form-urlencoded";
     private final static String TEXT_HTML = "text/html";
 
-    @Autowired
+    private final
     JokerService jokerService;
+
+    public RequestController(JokerService jokerService) {
+        this.jokerService = jokerService;
+    }
 
     @RequestMapping(method = RequestMethod.POST, path = "/jokerDiscountCalculator")
     public ResponseEntity<String> indexJson(HttpServletRequest request, HttpEntity<String> httpEntity,
@@ -62,12 +65,21 @@ public class RequestController {
             return new ResponseEntity<>("Unsupported Media Type", HttpStatus.UNSUPPORTED_MEDIA_TYPE);
 
 
-        final ResponseModel validResponse = jokerService.getResponse( payload );
+        return testAimed(payload);
+
+    }
+
+    public static ResponseEntity<String> testAimed(String payload) {
+        final String httpResponseBody;
+
+        String temp_httpResponseBody;
+
+        final ResponseModel validResponse = JokerService.getResponse( payload );
         temp_httpResponseBody = validResponse.toString();
 
         if ( errorMessage != null ) {
 
-            final ValidationErrorModel failedResponse = jokerService.getError();
+            final ValidationErrorModel failedResponse = JokerService.getError();
             temp_httpResponseBody = failedResponse.toString();
 
         }
@@ -117,7 +129,7 @@ public class RequestController {
         }
 
 
-        final ResponseModel validResponse = jokerService.getResponse( jsonFormattedPayload );
+        final ResponseModel validResponse = JokerService.getResponse( jsonFormattedPayload );
         temp_httpResponseBody = validResponse.toString();
 
         if ( errorMessage != null ) {

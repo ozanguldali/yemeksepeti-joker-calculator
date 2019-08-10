@@ -1,0 +1,17 @@
+{
+  "sshUser": "",
+  "sshHost": "",
+  "sshPort": "",
+  "keyFile": "",
+
+  "dbUsername": "",
+  "dbPassword": "",
+  "dbHost": "",
+  "dbDriverClass": "",
+
+  "restHost_env": "local",
+
+  "restHost_local": "http://localhost/",
+
+  "Cache-Control": ""
+}

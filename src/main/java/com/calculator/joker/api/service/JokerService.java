@@ -23,7 +23,7 @@ public class JokerService {
     private static HashMap<String, Double> customerInfoService = new HashMap<>();
     public static RequestModel requestModel;
 
-    public ResponseModel getResponse(String payload) {
+    public static ResponseModel getResponse(String payload) {
 
         requestModel = new RequestModel( payload );
 
@@ -82,7 +82,7 @@ public class JokerService {
 
                 try {
 
-                    userCostDouble = Double.valueOf( userCost );
+                    userCostDouble = Double.parseDouble( userCost );
 
                 } catch (Exception e) {
 
@@ -121,7 +121,7 @@ public class JokerService {
 
     }
 
-    public ValidationErrorModel getError() {
+    public static ValidationErrorModel getError() {
         return new ValidationErrorModel();
     }
 
