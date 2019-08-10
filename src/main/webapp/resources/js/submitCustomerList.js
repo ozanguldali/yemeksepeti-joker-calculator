@@ -20,7 +20,7 @@ submitButton.onclick = function () {
 
         }
 
-        if ( ( checkEmpty(name) || checkEmpty(cost) ) ) {
+        if ( ( name.length >= 1 && cost.length >= 1 ) && ( checkEmpty( name[0] ) || checkEmpty( cost[0] ) ) ) {
 
             if ( rowCount !== 1 ) {
 
