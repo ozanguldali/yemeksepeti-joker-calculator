@@ -52,10 +52,10 @@ public class ResponseModel {
 
         responseModel.setCustomers( customers );
 
-        totalActualCost = String.valueOf( decimalFormat.format( totalAmount * 100 ) );
-        totalDiscountedCost = String.valueOf( decimalFormat.format( totalDiscountAmount * 100 ) );
+        totalActualCost = String.valueOf( decimalFormat.format( totalAmount ) );
+        totalDiscountedCost = String.valueOf( decimalFormat.format( totalDiscountAmount ) );
         totalDiscountRatio = "%" + decimalFormat.format( discountPercent * 100 );
-        totalRoundedCost = String.valueOf( decimalFormat.format( roundedCost * 100 ) );
+        totalRoundedCost = String.valueOf( decimalFormat.format( roundedCost ) );
 
         customerInfoService.clear();
         customerSize = 0;
