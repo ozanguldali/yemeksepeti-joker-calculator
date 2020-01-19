@@ -7,6 +7,8 @@
   "background": {
     "scripts": ["webapp/resources/js/background.js",
                 "webapp/resources/js/common.js",
+                "webapp/resources/js/loadPage.js",
+                "webapp/resources/js/getPageSource.js",
                 "webapp/resources/js/addCustomer.js",
                 "webapp/resources/js/deleteCustomer.js",
                 "webapp/resources/js/cleanCustomerList.js",
