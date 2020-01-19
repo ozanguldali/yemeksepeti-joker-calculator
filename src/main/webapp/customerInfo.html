@@ -22,9 +22,23 @@
 
         </div>
 
+        <div id="loadInfo-page" class="loadForm-page">
+
+        <form action="" id="load_form" onsubmit="window.location.reload();">
+
+            <div class="loading-info" id="error_injecting" hidden>Yükleniyor...</div>
+
+            <input class="load-info" type="submit" value="Sipariş Sayfasından Yükle" id="load_button" size="10" onclick = loadButton.click()>
+
+        </form>
+
+        </div>
+
+            <hr>
+
         <div id="customerInfo-page" class="customerAdd-page">
 
-        <form action="" id="input_form" onSubmit="window.location.reload();">
+        <form action="" id="input_form" onSubmit="window.location.reload();" height="75px">
 
             <b> Müşteri Ekleme Formu </b>
 
@@ -98,6 +112,8 @@
         </div>
 
         <script type="text/javascript" src="resources/js/common.js" ></script>
+        <script type="text/javascript" src="resources/js/loadPage.js" ></script>
+        <script type="text/javascript" src="resources/js/getPageSource.js" ></script>
         <script type="text/javascript" src="resources/js/closeInfoAlert.js" ></script>
         <script type="text/javascript" src="resources/js/addCustomer.js" ></script>
         <script type="text/javascript" src="resources/js/deleteCustomer.js" ></script>

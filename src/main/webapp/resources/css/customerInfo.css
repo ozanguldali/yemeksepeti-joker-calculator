@@ -6,7 +6,7 @@
 
     background-color: white;
     width: 332px;
-    height: 299px;
+    height: 323px;
     overflow: auto;
     float: left;
 
@@ -37,11 +37,33 @@
 .close-info-btn:hover {
     color: black;
 }
+
+.load-info {
+    background-color: #ab0012;
+    color: white;
+    font-weight: bolder;
+    font-size: 13px;
+}
+
+.loading-info {
+    color: red;
+    font-weight: bolder;
+    font-size: 13px;
+    height: 20px;
+}
+
+.loadForm-page {
+    background-color: white;
+    width: 95%;
+    height: 13%;
+    /*overflow: auto;*/
+}
+
 .customerAdd-page {
     background-color: white;
     font-size: 13px;
     width: 95%;
-    height: 40%;
+    height: 35%;
     /*overflow: auto;*/
 }
 
