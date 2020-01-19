@@ -1,7 +1,7 @@
 {
   "name": "Yemeksepeti Joker Hesaplayici",
   "short_name": "Joker Hesaplayici",
-  "version": "4.0",
+  "version": "4.1",
   "description": "Yemeksepeti uzerinden kazanilan joker indirimlerinin, kisiye ozel hesaplanmasini saglar.",
   "permissions": ["activeTab"],
   "background": {
