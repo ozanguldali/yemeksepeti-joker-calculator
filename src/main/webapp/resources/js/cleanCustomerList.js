@@ -14,4 +14,12 @@ cleanButton.onclick = function () {
 
     customerListDiv.hidden = true;
 
+    customerListDiv.hidden = true;
+
+    error_injecting.hidden = true;
+
+    error_injecting.innerText = "Yükleniyor...";
+
+    loadButton.disabled = false;
+
 };

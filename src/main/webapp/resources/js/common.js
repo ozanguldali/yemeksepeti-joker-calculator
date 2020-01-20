@@ -13,8 +13,6 @@ let defaultDecimal = document.getElementById( 'decimal-0' );
 let cleanButton = document.getElementById('clear_button');
 let backButton = document.getElementById('back_button');
 
-let extensionID = chrome.runtime.id;
-
 window.setTimeout(function() {
 
     $( '.alert' )

@@ -28,11 +28,7 @@ function DOMtoString(document_root) {
     return html;
 }
 
-chrome.runtime.sendMessage(
-    extensionID,
-    {
-        action: "getSource",
-        source: DOMtoString(document)
-    },
-    function(results){ console.log(results); }
-);
+chrome.runtime.sendMessage({
+    action: "getSource",
+    source: DOMtoString(document)
+});

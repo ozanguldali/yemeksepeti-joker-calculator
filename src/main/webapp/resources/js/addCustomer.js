@@ -120,7 +120,17 @@ loadButton.onclick = function() {
 
         }
 
+        console.log( injecting_htmlString );
+
+        return false;
+
     }
+
+    setTimeout(function() {
+
+        error_injecting.innerText = 'Lütfen Elle Giriş Yapınız, veya Yeniden Başlatınız.';
+
+    }, 3 * 1000 );
 
     console.log( injecting_htmlString );
 

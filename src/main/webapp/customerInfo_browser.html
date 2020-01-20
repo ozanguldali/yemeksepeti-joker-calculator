@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+    <head>
+        <meta charset="utf-8">
+        <title>Musteri Bilgisi</title>
+        <script src="resources/jquery/jquery-3.4.1.min.js" ></script>
+    </head>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="resources/css/customerInfo.css">
+
+    <body>
+
+        <div id="main" class="main">
+
+        <div class="alert">
+
+            <span class="close-info-btn" id="close_alert" onclick = closeAlertButton.click()>&times;</span>
+            Toplu siparislerde; joker indirimi uygulandiktan sonra, her musterinin aldigi
+            urunlere gore ne kadar odemesi gerektigini hesaplar.
+
+        </div>
+
+        <div id="loadInfo-page" class="loadForm-page">
+
+        <form action="" id="load_form" onsubmit="window.location.reload();">
+
+            <div class="loading-info" id="error_injecting" hidden>Yükleniyor...</div>
+
+            <input class="load-info" type="submit" value="Sipariş Sayfasından Yükle" id="load_button" size="10" onclick = loadButton.click()>
+
+        </form>
+
+        </div>
+
+            <hr>
+
+        <div id="customerInfo-page" class="customerAdd-page">
+
+        <form action="" id="input_form" onSubmit="window.location.reload();" height="75px">
+
+            <b> Ürün / Müşteri Ekleme Formu </b>
+
+            <br>
+
+            <label for="name">Ürün / İsim - Soyisim: </label><br>
+                <input required class="input-info-class" type="text" id="name" size="30" minlength="1" maxlength="30"
+                       placeholder="Isim Soyisim"><br>
+
+            <label for="initial_cost">Jokersiz Tutar: </label><br>
+                <input required class="input-info-class" type="number" id="initial_cost" size ="6" min="0.01" max="999999"
+                       step="0.01" pattern="^\d+(?:\.\d{1,2})?$" placeholder="25.75"><br><br>
+
+            <input class="input-add-class" type="submit" value="Ekle" id="add_button" size="10" onclick = addButton.click()>
+
+        </form>
+
+        </div>
+
+        <div id="customerList" class="customerList-page" hidden>
+
+        <hr>
+
+        <form target="mainFrame" name="customerInfoForm" id="customerInfoForm" method="post" action="https://jokercalculator.herokuapp.com/jokerExtension">
+<!--        <form target="mainFrame" name="customerInfoForm" id="customerInfoForm" method="post" action="http://localhost:8012/jokerExtension">-->
+
+            <input type="hidden" id="hiddenField"/>
+
+            <table style="width:100%" id="customer_list">
+
+                <caption> <b> Ürün / Müşteri Listesi </b> </caption>
+
+                <tr>
+                    <th>Ürün / İsim - Soyisim</th>
+                    <th>Jokersiz Tutar</th>
+                </tr>
+
+            </table>
+
+            <br>
+            <b> Yuvarlanmak İstenen Ondalık Değer: </b>
+            <br>
+
+            <label>
+                <input type="radio" id="decimal-5" name="roundingValue" value="0.05">
+            </label> 0.05
+            <label>
+                <input type="radio" id="decimal-10" name="roundingValue" value="0.10">
+            </label> 0.10
+            <label>
+                <input type="radio" id="decimal-25" name="roundingValue" value="0.25">
+            </label> 0.25
+            <label>
+                <input type="radio" id="decimal-50" name="roundingValue" value="0.50">
+            </label> 0.50
+            <label>
+                <input type="radio" id="decimal-100" name="roundingValue" value="1.00">
+            </label> 1.00
+            <label>
+                <input type="radio" id="decimal-0" name="roundingValue" value="0" checked>
+            </label> Default
+
+            <br>
+            <br>
+
+            <button class="submit-class" type="submit" id="submit_button" onclick = submitButton.click()>Gönder</button>
+            <button class="clear-class" type="button" id="clear_button" onclick = cleanButton.click()>Temizle</button>
+
+        </form>
+
+        </div>
+
+        <script type="text/javascript" src="resources/js/common.js" ></script>
+        <script type="text/javascript" src="resources/js/loadPage.js" ></script>
+        <script type="text/javascript" src="resources/js/getPageSource.js" ></script>
+        <script type="text/javascript" src="resources/js/closeInfoAlert.js" ></script>
+        <script type="text/javascript" src="resources/js/addCustomer.js" ></script>
+        <script type="text/javascript" src="resources/js/deleteCustomer.js" ></script>
+        <script type="text/javascript" src="resources/js/submitCustomerList.js" ></script>
+        <script type="text/javascript" src="resources/js/cleanCustomerList.js" ></script>
+        <noscript>Sorry, your browser does not support JavaScript!</noscript>
+
+        </div>
+
+    </body>
+
+</html>
