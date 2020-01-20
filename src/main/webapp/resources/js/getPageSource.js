@@ -28,13 +28,11 @@ function DOMtoString(document_root) {
     return html;
 }
 
-function findByXpathFromDOM(path, document_root) {
-
-    return document.evaluate(path, document_root, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
-
-}
-
-chrome.runtime.sendMessage({
-    action: "getSource",
-    source: DOMtoString(document)
-});
+chrome.runtime.sendMessage(
+    extensionID,
+    {
+        action: "getSource",
+        source: DOMtoString(document)
+    },
+    function(results){ console.log(results); }
+);

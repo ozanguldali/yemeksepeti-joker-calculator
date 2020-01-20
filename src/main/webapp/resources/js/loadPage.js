@@ -22,7 +22,7 @@ function onWindowLoad() {
     injecting_DOM = new DOMParser().parseFromString( injecting_htmlString, "text/html");
 
     if( injecting_DOM.querySelector( "head > link:nth-child(56)" ) !== null &&
-        injecting_DOM.querySelector( "head > link:nth-child(56)" ).href.toString() === "https://www.yemeksepeti.com/siparis/bilgi" ) {
+        injecting_DOM.querySelector( "head > link:nth-child(56)" ).href.toString().includes( "https://www.yemeksepeti.com/siparis/bilgi" ) ) {
 
         message.style.color = "green";
         message.innerText = "Bilgiler Başarıyla Alındı.";
