@@ -12,6 +12,7 @@ let table = document.getElementById('customer_list');
 let defaultDecimal = document.getElementById( 'decimal-0' );
 let cleanButton = document.getElementById('clear_button');
 let backButton = document.getElementById('back_button');
+let backButton_browser = document.getElementById( 'back_button_browser' );
 
 window.setTimeout(function() {
 

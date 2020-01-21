@@ -97,8 +97,8 @@ public class RequestController {
 
 
     @RequestMapping(method = RequestMethod.POST, path = "/jokerExtension")
-    public ResponseEntity<String> indexFormPost(HttpServletRequest request, HttpEntity<String> httpEntity,
-                                        @RequestHeader(value = HttpHeaders.CONTENT_TYPE, defaultValue = FORM_POST) String contentType) {
+    public ResponseEntity<String> indexFormPostExtension(HttpServletRequest request, HttpEntity<String> httpEntity,
+                                                         @RequestHeader(value = HttpHeaders.CONTENT_TYPE, defaultValue = FORM_POST) String contentType) {
 
         errorMessage = null;
 
@@ -139,7 +139,61 @@ public class RequestController {
 
         }
 
-        Document htmlResponseBody = errorMessage == null ? parseResultPage( temp_httpResponseBody ) : parseErrorPage();
+        Document htmlResponseBody = errorMessage == null ? parseResultPage( temp_httpResponseBody, true ) : parseErrorPage();
+
+        HttpHeaders headersResponse = new HttpHeaders();
+        headersResponse.set( HttpHeaders.CONTENT_TYPE, TEXT_HTML);
+
+        restResponseLogger( beautifyJsonToString( jsonFormattedPayload ), headersResponse, htmlResponseBody.toString() );
+
+        return new ResponseEntity<>(htmlResponseBody.toString(), headersResponse, HttpStatus.OK);
+
+    }
+
+    @RequestMapping(method = RequestMethod.POST, path = "/jokerBrowser")
+    public ResponseEntity<String> indexFormPostBrowser(HttpServletRequest request, HttpEntity<String> httpEntity,
+                                                       @RequestHeader(value = HttpHeaders.CONTENT_TYPE, defaultValue = FORM_POST) String contentType) {
+
+        errorMessage = null;
+
+        final String payload = httpEntity.getBody();
+        String temp_httpResponseBody;
+
+        HttpHeaders headersRequest = new HttpHeaders();
+
+        httpEntity.getHeaders().forEach(
+                ( name, value ) -> headersRequest.set( name, String.valueOf( value ) )
+        );
+
+        headersRequest.set( HttpHeaders.CONTENT_TYPE, FORM_POST);
+        String jsonFormattedPayload = beautifyFormToJson( payload );
+
+        restRequestLogger( request.getMethod(), headersRequest, beautifyJsonToString( jsonFormattedPayload ) );
+
+        if ( !request.getMethod().equals( VALID_HTTP_METHOD ) || jsonFormattedPayload == null) {
+
+            logger.error( "Invalid request with payload { " + jsonFormattedPayload + " }" );
+            return new ResponseEntity<>( "Invalid Request", HttpStatus.METHOD_NOT_ALLOWED );
+
+        }
+
+        if ( !contentType.replace(" ", "").toLowerCase().trim().contains(FORM_POST) ){
+            logger.error( "Unsupported Media Type: " + contentType );
+            return new ResponseEntity<>("Unsupported Media Type", HttpStatus.UNSUPPORTED_MEDIA_TYPE);
+        }
+
+
+        final ResponseModel validResponse = JokerService.getResponse( jsonFormattedPayload );
+        temp_httpResponseBody = validResponse.toString();
+
+        if ( errorMessage != null ) {
+
+            final ValidationErrorModel failedResponse = jokerService.getError();
+            temp_httpResponseBody = failedResponse.toString();
+
+        }
+
+        Document htmlResponseBody = errorMessage == null ? parseResultPage( temp_httpResponseBody, false ) : parseErrorPage();
 
         HttpHeaders headersResponse = new HttpHeaders();
         headersResponse.set( HttpHeaders.CONTENT_TYPE, TEXT_HTML);

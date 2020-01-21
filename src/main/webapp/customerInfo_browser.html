@@ -22,7 +22,7 @@
 
         </div>
 
-        <div id="loadInfo-page" class="loadForm-page">
+        <div id="loadInfo-page" class="loadForm-page" hidden>
 
         <form action="" id="load_form" onsubmit="window.location.reload();">
 
@@ -34,7 +34,7 @@
 
         </div>
 
-            <hr>
+            <hr hidden>
 
         <div id="customerInfo-page" class="customerAdd-page">
 
@@ -62,8 +62,8 @@
 
         <hr>
 
-        <form target="mainFrame" name="customerInfoForm" id="customerInfoForm" method="post" action="https://jokercalculator.herokuapp.com/jokerExtension">
-<!--        <form target="mainFrame" name="customerInfoForm" id="customerInfoForm" method="post" action="http://localhost:8012/jokerExtension">-->
+        <form target="mainFrame" name="customerInfoForm" id="customerInfoForm" method="post" action="https://jokercalculator.herokuapp.com/jokerBrowser">
+<!--        <form target="mainFrame" name="customerInfoForm" id="customerInfoForm" method="post" action="http://localhost:8012/jokerBrowser">-->
 
             <input type="hidden" id="hiddenField"/>
 

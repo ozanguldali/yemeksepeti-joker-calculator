@@ -13,10 +13,12 @@ public class HtmlParser {
 
     private static final String PROJECT_DIR = System.getProperty("user.dir");
     private static final String SLASH = System.getProperty("file.separator");
-    private static final String JOKER_RESULT_HTML_FILE  = PROJECT_DIR + SLASH + "src" + SLASH + "main" + SLASH + "webapp" + SLASH + "jokerResult.html";
+    private static String JOKER_RESULT_HTML_FILE  = PROJECT_DIR + SLASH + "src" + SLASH + "main" + SLASH + "webapp" + SLASH;
     private static final String ERROR_PAGE              = PROJECT_DIR + SLASH + "src" + SLASH + "main" + SLASH + "webapp" + SLASH + "errorPage.html";
 
-    public static Document parseResultPage(String jsonString) {
+    public static Document parseResultPage(String jsonString, Boolean isExtension) {
+
+        JOKER_RESULT_HTML_FILE += ( isExtension ? "jokerResult.html" : "jokerResult_browser.html" );
 
         JsonObject jsonObject = new JsonParser().parse( jsonString ).getAsJsonObject();
 
