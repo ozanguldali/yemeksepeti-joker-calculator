@@ -2,6 +2,8 @@ let submitButton = document.getElementById('submit_button');
 
 submitButton.onclick = function () {
 
+    let loader = document.getElementsByClassName( "se-pre-con" )[0];
+
     let table = document.getElementById('customer_list');
 
     let rowCount = table.rows.length;
@@ -32,8 +34,19 @@ submitButton.onclick = function () {
 
     }
 
-    if (validation)
+    if (validation) {
+
+        main.style.pointerEvents = "none";
+
+        loader.hidden = false;
+
+        $(window).load(function() {
+            // Animate loader off screen
+            loader.fadeOut("slow");
+        });
+
         document.getElementById( 'customerInfoForm').submit();
+    }
 
     return false;
 

@@ -1,28 +1,28 @@
 <!DOCTYPE html>
 <html lang="tr">
 
-    <head>
-        <meta charset="utf-8">
-        <title>Musteri Bilgisi</title>
-        <script src="resources/jquery/jquery-3.4.1.min.js" ></script>
-    </head>
+<head>
+    <meta charset="utf-8">
+    <title>Musteri Bilgisi</title>
+    <script src="resources/jquery/jquery-3.4.1.min.js" ></script>
+</head>
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="resources/css/customerInfo.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="resources/css/customerInfo.css">
 
-    <body>
+<body>
 
-        <div id="main" class="main">
+<div id="main" class="main">
 
-        <div class="alert">
+    <div class="alert">
 
-            <span class="close-info-btn" id="close_alert" onclick = closeAlertButton.click()>&times;</span>
-            Toplu siparislerde; joker indirimi uygulandiktan sonra, her musterinin aldigi
-            urunlere gore ne kadar odemesi gerektigini hesaplar.
+        <span class="close-info-btn" id="close_alert" onclick = closeAlertButton.click()>&times;</span>
+        Toplu siparislerde; joker indirimi uygulandiktan sonra, her musterinin aldigi
+        urunlere gore ne kadar odemesi gerektigini hesaplar.
 
-        </div>
+    </div>
 
-        <div id="loadInfo-page" class="loadForm-page">
+    <div id="loadInfo-page" class="loadForm-page">
 
         <form action="" id="load_form" onsubmit="window.location.reload();">
 
@@ -32,11 +32,11 @@
 
         </form>
 
-        </div>
+    </div>
 
-            <hr>
+    <hr>
 
-        <div id="customerInfo-page" class="customerAdd-page">
+    <div id="customerInfo-page" class="customerAdd-page">
 
         <form action="" id="input_form" onSubmit="window.location.reload();" height="75px">
 
@@ -44,26 +44,38 @@
 
             <br>
 
-            <label for="name">Ürün / İsim - Soyisim: </label><br>
-                <input required class="input-info-class" type="text" id="name" size="30" minlength="1" maxlength="30"
-                       placeholder="Isim Soyisim"><br>
+            <label for="name">Ürün / İsim - Soyisim: </label>
 
-            <label for="initial_cost">Jokersiz Tutar: </label><br>
-                <input required class="input-info-class" type="number" id="initial_cost" size ="6" min="0.01" max="999999"
-                       step="0.01" pattern="^\d+(?:\.\d{1,2})?$" placeholder="25.75"><br><br>
+            <br>
+
+            <input required class="input-info-class" type="text" id="name" size="30" minlength="1" maxlength="30"
+                   placeholder="Isim Soyisim">
+
+            <br>
+
+            <label for="initial_cost">Jokersiz Tutar: </label>
+
+            <br>
+
+            <input required class="input-info-class" type="number" id="initial_cost" size ="6" min="0.01" max="999999"
+                   step="0.01" pattern="^\d+(?:\.\d{1,2})?$" placeholder="25.75">
+
+            <br><br>
 
             <input class="input-add-class" type="submit" value="Ekle" id="add_button" size="10" onclick = addButton.click()>
 
         </form>
 
-        </div>
+    </div>
 
-        <div id="customerList" class="customerList-page" hidden>
+    <div id="customerList" class="customerList-page" hidden>
 
         <hr>
 
-        <form target="mainFrame" name="customerInfoForm" id="customerInfoForm" method="post" action="https://jokercalculator.herokuapp.com/jokerExtension">
+            <form target="mainFrame" name="customerInfoForm" id="customerInfoForm" method="post" action="https://jokercalculator.herokuapp.com/jokerExtension">
 <!--        <form target="mainFrame" name="customerInfoForm" id="customerInfoForm" method="post" action="http://localhost:8012/jokerExtension">-->
+
+            <div class="se-pre-con" hidden></div>
 
             <input type="hidden" id="hiddenField"/>
 
@@ -109,20 +121,23 @@
 
         </form>
 
-        </div>
+    </div>
 
-        <script type="text/javascript" src="resources/js/common.js" ></script>
-        <script type="text/javascript" src="resources/js/loadPage.js" ></script>
-        <script type="text/javascript" src="resources/js/getPageSource.js" ></script>
-        <script type="text/javascript" src="resources/js/closeInfoAlert.js" ></script>
-        <script type="text/javascript" src="resources/js/addCustomer.js" ></script>
-        <script type="text/javascript" src="resources/js/deleteCustomer.js" ></script>
-        <script type="text/javascript" src="resources/js/submitCustomerList.js" ></script>
-        <script type="text/javascript" src="resources/js/cleanCustomerList.js" ></script>
-        <noscript>Sorry, your browser does not support JavaScript!</noscript>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js"></script>
 
-        </div>
+    <script type="text/javascript" src="resources/js/common.js" ></script>
+    <script type="text/javascript" src="resources/js/loadPage.js" ></script>
+    <script type="text/javascript" src="resources/js/getPageSource.js" ></script>
+    <script type="text/javascript" src="resources/js/closeInfoAlert.js" ></script>
+    <script type="text/javascript" src="resources/js/addCustomer.js" ></script>
+    <script type="text/javascript" src="resources/js/deleteCustomer.js" ></script>
+    <script type="text/javascript" src="resources/js/submitCustomerList.js" ></script>
+    <script type="text/javascript" src="resources/js/cleanCustomerList.js" ></script>
+    <noscript>Sorry, your browser does not support JavaScript!</noscript>
 
-    </body>
+</div>
+
+</body>
 
 </html>

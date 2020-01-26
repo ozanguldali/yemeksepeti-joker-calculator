@@ -1,3 +1,4 @@
+let main = document.getElementById( 'main' );
 let closeAlertButton = document.getElementById('close_alert');
 let inputForm = document.getElementById('input_form');
 let initialCostField = document.getElementById('initial_cost');
@@ -16,13 +17,13 @@ let backButton_browser = document.getElementById( 'back_button_browser' );
 
 window.setTimeout(function() {
 
-    $( '.alert' )
-        .fadeTo( 500, 0 )
-        .slideUp( 500, function() {
+        $( '.alert' )
+            .fadeTo( 500, 0 )
+            .slideUp( 500, function() {
 
-            $( this ).remove();
+                $( this ).remove();
 
-        });
+            });
     }, 4000
 
 );
