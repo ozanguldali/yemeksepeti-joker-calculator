@@ -95,6 +95,8 @@ loadButton.onclick = function() {
 
             name = order_table.rows[ i ].cells[0].querySelector( "b" ).innerText;
 
+            name = name.replace( '&', 'and' )
+
             count = order_table.rows[ i ].cells[2].innerText;
 
             value = order_table.rows[ i ].cells[3].innerText;
