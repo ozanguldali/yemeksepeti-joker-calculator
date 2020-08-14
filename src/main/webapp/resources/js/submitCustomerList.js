@@ -40,12 +40,39 @@ submitButton.onclick = function () {
 
         loader.hidden = false;
 
-        $(window).load(function() {
+        /*$(window).load(function() {
             // Animate loader off screen
             loader.fadeOut("slow");
-        });
+        });*/
 
-        document.getElementById( 'customerInfoForm').submit();
+        let form = document.getElementById( 'customerInfoForm');
+
+        let formElements = form.elements;
+
+        for ( const input of formElements ) {
+
+            console.log(input)
+
+            let input_name = input.name;
+
+            if ( input_name !== "" && input_name.includes( 'name' ) ) {
+
+                let input_value = input.value;
+
+                if ( input_value.includes( '&' ) ) {
+
+                    let arr = input_value.split( '&' );
+                    input_value = arr.join( 'and' );
+                    input.value = input_value;
+
+                }
+
+            }
+
+        }
+
+        form.submit();
+
     }
 
     return false;
