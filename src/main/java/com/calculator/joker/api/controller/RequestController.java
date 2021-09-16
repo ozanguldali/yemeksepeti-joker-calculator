@@ -100,6 +100,9 @@ public class RequestController {
     public ResponseEntity<String> indexFormPostExtension(HttpServletRequest request, HttpEntity<String> httpEntity,
                                                          @RequestHeader(value = HttpHeaders.CONTENT_TYPE, defaultValue = FORM_POST) String contentType) {
 
+        System.out.println(httpEntity.getBody());
+        System.out.println(contentType);
+
         errorMessage = null;
 
         final String payload = httpEntity.getBody();
